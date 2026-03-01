@@ -1044,16 +1044,17 @@ const chapterContents = {
     <h2>1. The Language of Circles: Degrees vs. Radians</h2>
     <p>Normally, when you spin all the way around, you say you spun <strong>360 degrees ($360^{\\circ}$)</strong>. But in the world of physics, scientists speak a different language called <strong>Radians</strong>. Why? Because radians connect the angle directly to the length of a circle's edge (the arc).</p>
     
-    <div class="eli10-block">
-      <div class="eli10-title">💡 Think of it like this:</div>
-      <p>Degrees and Radians are just two different languages to describe the same slice of pizza. In the "Degree" language, a whole pizza is cut into 360 tiny slices. In the "Radian" language, the whole pizza is cut into $2\\pi$ slices!</p>
+    <div class="math-box" style="border: 2px solid var(--gold); padding: 25px; text-align: center; border-radius: 12px; background: rgba(201,168,76,0.05);">
+      <h3 style="color: var(--gold); margin-bottom: 20px; font-family: 'Instrument Sans', sans-serif; font-size: 1.4rem; text-align: left;">➤ Angle Conversion Formulas:</h3>
+      <div style="border: 2px solid var(--text); padding: 20px; display: inline-block; margin-bottom: 20px; border-radius: 8px;">
+        $$1 \\text{ degree} = \\frac{\\pi}{180} (\\approx 0.02) \\text{ radian}$$
+      </div>
+      <br>
+      <div style="font-size: 1.3rem;">
+        $$1 \\text{ radian} \\approx 57 \\text{ degrees}$$
+      </div>
     </div>
-
-    <p>To translate between the two languages, we use this cheat code:</p>
-    <div class="math-box">
-      $$1 \\text{ Degree} = \\frac{\\pi}{180} \\text{ Radians} \\approx 0.02 \\text{ Radians}$$
-      $$1 \\text{ Radian} = \\frac{180}{\\pi} \\text{ Degrees} \\approx 57^{\\circ}$$
-    </div>
+    
     <p>So, if you have a right angle ($90^{\\circ}$), you just multiply: $90 \\times \\frac{\\pi}{180} = \\frac{\\pi}{2}$ radians.</p>
 
     <h2>2. Time Travel Angles (+ and -)</h2>
@@ -1134,50 +1135,14 @@ const chapterContents = {
 
     <div class="math-box">
       If the angle is $37^{\\circ}$ (opposite the small side 3):<br>
-      $$\\sin 37^{\\circ} = \\frac{3}{5} \\quad \\cos 37^{\\circ} = \\frac{4}{5} \\quad \\tan 37^{\\circ} = \\frac{3}{4}$$
+      $$\\sin(37^{\\circ}) = \\frac{3}{5} \\quad \\cos(37^{\\circ}) = \\frac{4}{5} \\quad \\tan(37^{\\circ}) = \\frac{3}{4}$$
       <br>
       If the angle is $53^{\\circ}$ (opposite the larger side 4):<br>
-      $$\\sin 53^{\\circ} = \\frac{4}{5} \\quad \\cos 53^{\\circ} = \\frac{3}{5} \\quad \\tan 53^{\\circ} = \\frac{4}{3}$$
+      $$\\sin(53^{\\circ}) = \\frac{4}{5} \\quad \\cos(53^{\\circ}) = \\frac{3}{5} \\quad \\tan(53^{\\circ}) = \\frac{4}{3}$$
     </div>
 
-    <h3>Standard Angles Cheat Sheet</h3>
-    <table class="trigo-table">
-      <tr>
-        <th>Angle (θ)</th>
-        <th>0°</th>
-        <th>30° (π/6)</th>
-        <th>45° (π/4)</th>
-        <th>60° (π/3)</th>
-        <th>90° (π/2)</th>
-      </tr>
-      <tr>
-        <td>sin θ</td>
-        <td>0</td>
-        <td>1/2</td>
-        <td>1/$\\sqrt{2}$</td>
-        <td>$\\sqrt{3}$/2</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>cos θ</td>
-        <td>1</td>
-        <td>$\\sqrt{3}$/2</td>
-        <td>1/$\\sqrt{2}$</td>
-        <td>1/2</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>tan θ</td>
-        <td>0</td>
-        <td>1/$\\sqrt{3}$</td>
-        <td>1</td>
-        <td>$\\sqrt{3}$</td>
-        <td>Not Defined</td>
-      </tr>
-    </table>
-
-    <h2>4. The ASTC Rule (Big Angles)</h2>
-    <p>What if an angle is bigger than $90^{\\circ}$? Like $120^{\\circ}$ or $210^{\\circ}$? We divide the circle into 4 rooms (Quadrants).</p>
+    <h2>4. The ASTC Rule & Quadrants</h2>
+    <p>What if an angle is bigger than $90^{\\circ}$? We divide the circle into 4 rooms (Quadrants).</p>
     
     <div class="svg-container">
       <svg viewBox="0 0 200 200" class="concept-svg">
@@ -1201,26 +1166,12 @@ const chapterContents = {
     
     <p>We remember this using the phrase: <strong>"After School To College" (ASTC)</strong>.</p>
     <p><em>Pro Tip:</em> Always try to break the angle using the Horizontal Line ($180^{\\circ}$ or $360^{\\circ}$) so the function (sin, cos, tan) doesn't change!</p>
-    
-    <div class="math-box" style="text-align: left; padding: 30px;">
-      <strong>Examples using Horizontal Line ($180^{\\circ}$):</strong><br><br>
-      • $\\sin(120^{\\circ})$ is in Room 2 (Sin is +ve). <br>
-      $\\sin(180^{\\circ} - 60^{\\circ}) = +\\sin(60^{\\circ}) = \\frac{\\sqrt{3}}{2}$ <br><br>
-      
-      • $\\cos(210^{\\circ})$ is in Room 3 (Cos is -ve). <br>
-      $\\cos(180^{\\circ} + 30^{\\circ}) = -\\cos(30^{\\circ}) = -\\frac{\\sqrt{3}}{2}$
-    </div>
 
-    <div class="eli10-block">
-      <div class="eli10-title">⚠️ The "Vertical Line" Exception</div>
-      <p>What if you use the vertical line ($90^{\\circ}$ or $270^{\\circ}$, written as $(2n+1)\\frac{\\pi}{2}$)?</p>
-      <p><strong>The Rule:</strong> The function transforms into its "complementary" partner!</p>
-      <ul>
-        <li>$\\sin \\leftrightarrow \\cos$</li>
-        <li>$\\tan \\leftrightarrow \\cot$</li>
-        <li>$\\sec \\leftrightarrow \\csc$</li>
-      </ul>
-      <p>The sign (+ or -) is still decided by the <strong>original</strong> function and the ASTC room it lives in.</p>
+    <div class="eli10-block" style="border-left-color: var(--gold); background: rgba(201,168,76,0.05);">
+      <div class="eli10-title" style="color: var(--gold);">STEP-2: (b) The "Vertical Line" Rule</div>
+      <p>If angle = $ \\left[ (2n + 1)\\frac{\\pi}{2} \\pm \\theta \\right] $ where $n$ is an integer. Then trigonometric function of $ \\left[ (2n + 1)\\frac{\\pi}{2} \\pm \\theta \\right] $ = <strong>complimentary trigonometric function</strong> of $\\theta$ and sign will be decided by CAST Rule.</p>
+      <br>
+      <p><strong>Complementary Pairs:</strong> $\\sin \\leftrightarrow \\cos$ | $\\tan \\leftrightarrow \\cot$ | $\\sec \\leftrightarrow \\csc$</p>
     </div>
 
     <div class="math-box" style="text-align: left; padding: 30px;">
@@ -1228,6 +1179,77 @@ const chapterContents = {
       • $\\sin(120^{\\circ})$ is in Room 2 (Original function $\\sin$ is +ve). <br>
       $\\sin(90^{\\circ} + 30^{\\circ}) = +\\cos(30^{\\circ}) = \\frac{\\sqrt{3}}{2}$ <br>
       <em>(Notice how $\\sin$ turned into $\\cos$, but we still get the exact same answer!)</em>
+    </div>
+
+    <h3 style="color: var(--gold); margin-top: 50px;">Values of $\\sin\\theta, \\cos\\theta$ and $\\tan\\theta$ for some standard angles.</h3>
+    <div style="overflow-x: auto;">
+      <table class="trigo-table">
+        <tr>
+          <th>Degree</th>
+          <th>0</th>
+          <th>30</th>
+          <th>37</th>
+          <th>45</th>
+          <th>53</th>
+          <th>60</th>
+          <th>90</th>
+          <th>120</th>
+          <th>135</th>
+          <th>180</th>
+        </tr>
+        <tr>
+          <td>Radians</td>
+          <td>0</td>
+          <td>$\\pi/6$</td>
+          <td>$37\\pi/180$</td>
+          <td>$\\pi/4$</td>
+          <td>$53\\pi/180$</td>
+          <td>$\\pi/3$</td>
+          <td>$\\pi/2$</td>
+          <td>$2\\pi/3$</td>
+          <td>$3\\pi/4$</td>
+          <td>$\\pi$</td>
+        </tr>
+        <tr>
+          <td>$\\sin \\theta$</td>
+          <td>0</td>
+          <td>$1/2$</td>
+          <td>$3/5$</td>
+          <td>$1/\\sqrt{2}$</td>
+          <td>$4/5$</td>
+          <td>$\\sqrt{3}/2$</td>
+          <td>$1$</td>
+          <td>$\\sqrt{3}/2$</td>
+          <td>$1/\\sqrt{2}$</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>$\\cos \\theta$</td>
+          <td>1</td>
+          <td>$\\sqrt{3}/2$</td>
+          <td>$4/5$</td>
+          <td>$1/\\sqrt{2}$</td>
+          <td>$3/5$</td>
+          <td>$1/2$</td>
+          <td>0</td>
+          <td>$-1/2$</td>
+          <td>$-1/\\sqrt{2}$</td>
+          <td>$-1$</td>
+        </tr>
+        <tr>
+          <td>$\\tan \\theta$</td>
+          <td>0</td>
+          <td>$1/\\sqrt{3}$</td>
+          <td>$3/4$</td>
+          <td>1</td>
+          <td>$4/3$</td>
+          <td>$\\sqrt{3}$</td>
+          <td>$\\infty$</td>
+          <td>$-\\sqrt{3}$</td>
+          <td>$-1$</td>
+          <td>0</td>
+        </tr>
+      </table>
     </div>
 
     <h3>Angles larger than 360°</h3>
@@ -1263,7 +1285,7 @@ const chapterContents = {
       $$ 3.\\; \\cos(2\\theta) = \\cos^2(\\theta) - \\sin^2(\\theta) = 1 - 2\\sin^2(\\theta) $$
       
       <h3 style="color: var(--gold); margin: 30px 0 20px;">Other Important Identities</h3>
-      $$ 1 + \\tan^2\\theta = \\sec^2\\theta \\quad \\text{and} \\quad 1 + \\cot^2\\theta = \\csc^2\\theta $$
+      $$ 1 + \\tan^2(\\theta) = \\sec^2(\\theta) \\quad \\text{and} \\quad 1 + \\cot^2(\\theta) = \\csc^2(\\theta) $$
       
       <h3 style="color: var(--gold); margin: 30px 0 20px;">Compound Angles</h3>
       $$ \\cos(A \\pm B) = \\cos A \\cos B \\mp \\sin A \\sin B $$
@@ -1271,9 +1293,9 @@ const chapterContents = {
       $$ \\tan(A + B) = \\frac{\\tan A + \\tan B}{1 - \\tan A \\tan B} $$
       
       <h3 style="color: var(--gold); margin: 30px 0 20px;">Half Angles</h3>
-      $$ \\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2} \\quad \\text{and} \\quad \\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2} $$
+      $$ \\cos^2(\\theta) = \\frac{1 + \\cos(2\\theta)}{2} \\quad \\text{and} \\quad \\sin^2(\\theta) = \\frac{1 - \\cos(2\\theta)}{2} $$
       <br>
-      $$ \\cos 15^{\\circ} = \\sqrt{\\frac{1 + \\cos 30^{\\circ}}{2}} \\quad \\text{and} \\quad \\sin 15^{\\circ} = \\sqrt{\\frac{1 - \\cos 30^{\\circ}}{2}} $$
+      $$ \\cos(15^{\\circ}) = \\sqrt{\\frac{1 + \\cos(30^{\\circ})}{2}} \\quad \\text{and} \\quad \\sin(15^{\\circ}) = \\sqrt{\\frac{1 - \\cos(30^{\\circ})}{2}} $$
     </div>
 
     <!-- Practice Arena -->
