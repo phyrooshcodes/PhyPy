@@ -18,7 +18,6 @@
 </script>
 
 <!-- MathJax for rendering LaTeX math formulas -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
@@ -122,15 +121,7 @@
     position: absolute;
   }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 20px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(10,10,15,0.95) 0%, transparent 100%);
-    backdrop-filter: blur(4px);
-  }
+  /* NAV - see enhanced styles below */
   .nav-left {
     display: flex;
     align-items: center;
@@ -258,14 +249,7 @@
   .subject-card[data-subject="chemistry"]:hover { border-color: rgba(124,219,138,0.3); box-shadow: 0 20px 60px rgba(124,219,138,0.1); }
   .subject-card[data-subject="math"]:hover { border-color: rgba(255,126,179,0.3); box-shadow: 0 20px 60px rgba(255,126,179,0.1); }
 
-  .card-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    margin-bottom: 32px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-    position: relative;
-  }
+  /* card-icon — see enhanced styles at bottom */
   [data-subject="physics"] .card-icon { background: rgba(74,158,255,0.15); }
   [data-subject="chemistry"] .card-icon { background: rgba(124,219,138,0.15); }
   [data-subject="math"] .card-icon { background: rgba(255,126,179,0.15); }
@@ -721,7 +705,8 @@
   .trigo-table {
     width: 100%;
     border-collapse: collapse;
-    .trigo-table td:first-child {
+  }
+  .trigo-table td:first-child {
     font-family: 'DM Mono', monospace;
     color: var(--physics);
     font-weight: bold;
@@ -783,27 +768,229 @@
     .nav-left { gap: 16px; } /* Slightly smaller gap on mobile */
   }
 
-  /* Scroll indicator */
-  .scroll-hint {
-    position: fixed; bottom: 32px; right: 48px;
+  /* ─── GRID BACKGROUND ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 80%);
+  }
+
+  /* ─── LOGO MARK ─── */
+  .logo-mark {
+    position: relative;
+    width: 28px; height: 28px;
+    flex-shrink: 0;
+  }
+  .logo-mark svg {
+    width: 100%; height: 100%;
+    animation: logoSpin 12s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes logoSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .logo-mark-core {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    animation: logoPulse 3s ease-in-out infinite;
+  }
+  @keyframes logoPulse {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  /* ─── NAV PILL ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.97) 60%, transparent 100%);
+    backdrop-filter: blur(12px);
+    z-index: -1;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ─── HERO ORBIT ─── */
+  .hero-orbit {
+    position: absolute;
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 600px; height: 600px;
+    pointer-events: none;
+    opacity: 0.15;
+  }
+  .hero-orbit svg {
+    width: 100%; height: 100%;
+    animation: orbitRotate 30s linear infinite;
+  }
+  @keyframes orbitRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .hero-orbit-2 {
+    animation: orbitRotate 20s linear infinite reverse !important;
+  }
+  .hero-orbit-3 {
+    animation: orbitRotate 45s linear infinite !important;
+  }
+
+  /* ─── CARD PATTERN BACKGROUNDS ─── */
+  .subject-card[data-subject="physics"]::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(74,158,255,0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: var(--radius);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .subject-card[data-subject="chemistry"]::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(60deg, rgba(124,219,138,0.04) 1px, transparent 1px),
+      linear-gradient(-60deg, rgba(124,219,138,0.04) 1px, transparent 1px);
+    background-size: 20px 34px;
+    border-radius: var(--radius);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .subject-card[data-subject="math"]::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,126,179,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,126,179,0.04) 1px, transparent 1px);
+    background-size: 16px 16px;
+    border-radius: var(--radius);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .subject-card:hover::after { opacity: 1; }
+  
+  /* Subtle glow spot at top of each card */
+  .card-glow {
+    position: absolute;
+    top: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 60px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    filter: blur(20px);
+  }
+  [data-subject="physics"] .card-glow { background: var(--physics); }
+  [data-subject="chemistry"] .card-glow { background: var(--chemistry); }
+  [data-subject="math"] .card-glow { background: var(--math); }
+  .subject-card:hover .card-glow { opacity: 0.25; }
+
+  /* Subject card icon — larger & more distinctive */
+  .card-icon {
+    width: 54px; height: 54px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    position: relative;
+    border: 1px solid transparent;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+  [data-subject="physics"]:hover .card-icon { border-color: rgba(74,158,255,0.3); box-shadow: 0 0 20px rgba(74,158,255,0.1); }
+  [data-subject="chemistry"]:hover .card-icon { border-color: rgba(124,219,138,0.3); box-shadow: 0 0 20px rgba(124,219,138,0.1); }
+  [data-subject="math"]:hover .card-icon { border-color: rgba(255,126,179,0.3); box-shadow: 0 0 20px rgba(255,126,179,0.1); }
+
+  /* Brand tagline under logo */
+  .brand-tagline {
     font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.3em;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-muted);
-    writing-mode: vertical-rl;
-    display: flex; align-items: center; gap: 12px;
-    z-index: 50;
-    animation: fadeHint 3s ease 2s both;
+    padding-left: 2px;
   }
-  @keyframes fadeHint {
-    from { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } to { opacity: 0; }
+  .nav-logo-wrap {
+    display: flex; flex-direction: column; gap: 1px;
+    cursor: pointer;
   }
-  .scroll-hint::after {
-    content: '';
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--text-muted), transparent);
+  .nav-logo-wrap:hover .nav-logo { color: var(--gold); }
+  .nav-logo-wrap:hover .brand-tagline { color: var(--gold-glow); }
+
+  /* Hero badge */
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 100px;
+    padding: 6px 14px 6px 8px;
+    margin-bottom: 32px;
   }
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: badgePulse 2s ease-in-out infinite;
+    box-shadow: 0 0 6px var(--gold);
+  }
+  @keyframes badgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-badge-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Separator line under hero sub with fade */
+  .hero-divider {
+    display: flex; align-items: center; gap: 16px;
+    margin-top: 40px;
+  }
+  .hero-divider-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--gold-dim), transparent);
+    max-width: 200px;
+  }
+  .hero-divider-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Trigo table proper styles */
+  .trigo-table th {
+    background: rgba(255,255,255,0.04);
+    padding: 12px 16px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+  }
+  .trigo-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .trigo-table tr:hover td { background: rgba(255,255,255,0.02); }
 </style>
 </head>
 <body>
@@ -818,7 +1005,23 @@
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <div class="nav-logo" onclick="goHome()">Phy<span>Py</span></div>
+    <!-- Animated Logo Mark -->
+    <div class="logo-mark">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="14" cy="14" rx="12" ry="5" stroke="rgba(201,168,76,0.6)" stroke-width="1"/>
+        <ellipse cx="14" cy="14" rx="12" ry="5" stroke="rgba(74,158,255,0.4)" stroke-width="1" transform="rotate(60 14 14)"/>
+        <ellipse cx="14" cy="14" rx="12" ry="5" stroke="rgba(124,219,138,0.4)" stroke-width="1" transform="rotate(120 14 14)"/>
+      </svg>
+      <div class="logo-mark-core">
+        <div style="width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);"></div>
+      </div>
+    </div>
+
+    <div class="nav-logo-wrap" onclick="goHome()">
+      <div class="nav-logo">Phy<span>Py</span></div>
+      <div class="brand-tagline">JEE · Deep Concepts</div>
+    </div>
+
     <a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">⚡ @phyrooshh</a>
   </div>
   <div class="nav-right" id="nav-context">Home</div>
@@ -826,13 +1029,35 @@
 
 <!-- ===== HOME PAGE ===== -->
 <div class="page active" id="home">
-  <section class="hero">
-    <div class="hero-eyebrow">PhyPy — Joint Entrance Examination</div>
+  <section class="hero" style="position:relative;overflow:hidden;">
+    <!-- Decorative orbit background -->
+    <div class="hero-orbit" aria-hidden="true">
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="300" cy="300" r="200" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="4 8"/>
+        <ellipse cx="300" cy="300" rx="280" ry="100" stroke="rgba(74,158,255,0.3)" stroke-width="1" stroke-dasharray="2 6"/>
+        <ellipse cx="300" cy="300" rx="280" ry="100" stroke="rgba(124,219,138,0.25)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(120 300 300)"/>
+        <ellipse cx="300" cy="300" rx="280" ry="100" stroke="rgba(255,126,179,0.2)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(240 300 300)"/>
+        <circle cx="300" cy="100" r="5" fill="rgba(201,168,76,0.8)"/>
+        <circle cx="480" cy="380" r="3" fill="rgba(74,158,255,0.7)"/>
+        <circle cx="150" cy="420" r="4" fill="rgba(124,219,138,0.6)"/>
+      </svg>
+    </div>
+
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">Joint Entrance Examination Prep</span>
+    </div>
+
     <h1 class="hero-title">
       Master every<br>
       concept, <em>deeply.</em>
     </h1>
     <p class="hero-sub">A personal study companion built chapter by chapter — animated explanations, structured thinking, lasting clarity.</p>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-text">Physics · Chemistry · Mathematics</span>
+    </div>
   </section>
 
   <section class="subjects-section">
@@ -840,6 +1065,7 @@
     <div class="subjects-grid">
 
       <div class="subject-card" data-subject="physics" onclick="openSubject('physics')">
+        <div class="card-glow"></div>
         <div class="card-icon">⚛️</div>
         <div class="card-num">01 — Subject</div>
         <h2 class="card-title">Physics</h2>
@@ -851,6 +1077,7 @@
       </div>
 
       <div class="subject-card" data-subject="chemistry" onclick="openSubject('chemistry')">
+        <div class="card-glow"></div>
         <div class="card-icon">🧪</div>
         <div class="card-num">02 — Subject</div>
         <h2 class="card-title">Chemistry</h2>
@@ -862,6 +1089,7 @@
       </div>
 
       <div class="subject-card" data-subject="math" onclick="openSubject('math')">
+        <div class="card-glow"></div>
         <div class="card-icon">∑</div>
         <div class="card-num">03 — Subject</div>
         <h2 class="card-title">Mathematics</h2>
@@ -876,7 +1104,6 @@
   </section>
 
   <div class="home-footer-line"></div>
-  <div class="scroll-hint">Explore</div>
 </div>
 
 <!-- ===== SUBJECT PAGE ===== -->
