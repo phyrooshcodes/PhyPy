@@ -922,17 +922,38 @@ const subjects = {
     desc: 'Understand forces, motion, energy, waves, and the quantum world through deep conceptual animations and structured problem-solving.',
     accent: 'var(--physics)',
     chapters: [
-      { 
-        name: 'Mathematical Tools', 
-        tag: 'Foundations', 
-        status: 'available',
-        contentId: 'math-tools-physics' // Maps to content below
-      },
-      { name: 'Motion in a Straight Line',       tag: 'Kinematics',            status: 'coming' },
-      { name: 'Motion in a Plane',               tag: 'Kinematics',            status: 'coming' },
+      { name: 'Mathematical Tools',              tag: 'Foundations',            status: 'available', contentId: 'math-tools-physics' },
+      { name: 'Motion in a Straight Line',       tag: 'Kinematics',             status: 'coming' },
+      { name: 'Motion in a Plane',               tag: 'Kinematics',             status: 'coming' },
       { name: 'Laws of Motion',                  tag: 'Mechanics',              status: 'coming' },
       { name: 'Work, Energy and Power',          tag: 'Mechanics',              status: 'coming' },
-      // ... (Truncated the rest for simplicity, but the structure remains)
+      { name: 'Circular Motion',                 tag: 'Mechanics',              status: 'coming' },
+      { name: 'Centre of Mass & Collisions',     tag: 'Mechanics',              status: 'coming' },
+      { name: 'Rotational Motion',               tag: 'Mechanics',              status: 'coming' },
+      { name: 'Mechanical Properties of Solids', tag: 'Properties of Matter',   status: 'coming' },
+      { name: 'Mechanical Properties of Fluids', tag: 'Properties of Matter',   status: 'coming' },
+      { name: 'Dual Nature of Matter',           tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Thermal Properties of Heat',      tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Kinetic Theory',                  tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Thermodynamics',                  tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Electric Charges and Fields',     tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Electrostatic Potential',         tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Gravitation',                     tag: 'Mechanics',              status: 'coming' },
+      { name: 'Current Electricity',             tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Capacitance',                     tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Moving Charges and Magnetism',    tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Electromagnetic Induction',       tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Magnetism and Matter',            tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Alternating Current',             tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Ray Optics and Optical Instruments', tag: 'Optics',              status: 'coming' },
+      { name: 'Oscillations',                    tag: 'Wave Physics',           status: 'coming' },
+      { name: 'Atoms',                           tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Electromagnetic Waves',           tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Nuclei',                          tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Waves',                           tag: 'Wave Physics',           status: 'coming' },
+      { name: 'Wave Optics',                     tag: 'Optics',                 status: 'coming' },
+      { name: 'Semiconductors',                  tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Units and Measurements',          tag: 'Foundations',            status: 'coming' },
     ]
   },
   chemistry: {
@@ -940,8 +961,40 @@ const subjects = {
     desc: 'From atomic structure to organic reactions — build a mental model of how matter behaves, transforms, and why it does so.',
     accent: 'var(--chemistry)',
     chapters: [
-      { name: 'Some Basic Concepts of Chemistry', tag: 'Physical Chemistry',   status: 'coming' },
-      { name: 'Structure of Atom',                tag: 'Physical Chemistry',   status: 'coming' },
+      // Physical Chemistry
+      { name: 'Some Basic Concepts of Chemistry',       tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Redox Reaction',                         tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Solutions',                              tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Structure of Atom',                      tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Chemical Kinetics',                      tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Thermodynamics',                         tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Chemical Equilibrium',                   tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Ionic Equilibrium',                      tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Electrochemistry',                       tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'The Solid State',                        tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'States of Matter',                       tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Surface Chemistry',                      tag: 'Physical Chemistry',   status: 'coming' },
+      // Organic Chemistry
+      { name: 'Some Basic Principles of Org. Chem. I',  tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Some Basic Principles of Org. Chem. II', tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Some Basic Principles of Org. Chem. III',tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Hydrocarbon',                            tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Practical Organic Chemistry',            tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Biomolecules',                           tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Haloalkanes and Haloarenes',             tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Alcohols, Phenols and Ethers',           tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Amines',                                 tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Aldehydes, Ketones and Carboxylic Acids',tag: 'Organic Chemistry',    status: 'coming' },
+      // Inorganic Chemistry
+      { name: 'Classification of Elements',             tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Chemical Bonding and Molecular Structure', tag: 'Inorganic Chemistry',status: 'coming' },
+      { name: 'The d and f-Block Elements',             tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Coordination Compounds',                 tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'P-block Elements',                       tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Principles of Metallurgy',               tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'S-block Elements',                       tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Hydrogen and its Compounds',             tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'General Principles and Processes',       tag: 'Inorganic Chemistry',  status: 'coming' },
     ]
   },
   math: {
@@ -951,6 +1004,34 @@ const subjects = {
     chapters: [
       { name: 'Basic Mathematics',                 tag: 'Foundations',            status: 'coming' },
       { name: 'Quadratic Equations',               tag: 'Algebra',                status: 'coming' },
+      { name: 'Sequence and Series',               tag: 'Algebra',                status: 'coming' },
+      { name: 'Trigonometric Ratios & Identities', tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Trigonometric Equations',           tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Permutations and Combinations',     tag: 'Combinatorics',          status: 'coming' },
+      { name: 'Binomial Theorem',                  tag: 'Algebra',                status: 'coming' },
+      { name: 'Straight Lines',                    tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Circles',                           tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Statistics',                        tag: 'Statistics',             status: 'coming' },
+      { name: 'Solution of Triangle',              tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Conic Sections: Parabola',          tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Conic Sections: Ellipse',           tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Conic Sections: Hyperbola',         tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Determinants',                      tag: 'Algebra',                status: 'coming' },
+      { name: 'Matrices',                          tag: 'Algebra',                status: 'coming' },
+      { name: 'Sets',                              tag: 'Foundations',            status: 'coming' },
+      { name: 'Relations and Functions',           tag: 'Foundations',            status: 'coming' },
+      { name: 'Inverse Trigonometric Functions',   tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Limit, Continuity and Differentiability', tag: 'Calculus',         status: 'coming' },
+      { name: 'Method of Differentiation',         tag: 'Calculus',               status: 'coming' },
+      { name: 'Vector Algebra',                    tag: '3D Mathematics',         status: 'coming' },
+      { name: 'Application of Derivatives',        tag: 'Calculus',               status: 'coming' },
+      { name: 'Three Dimensional Geometry',        tag: '3D Mathematics',         status: 'coming' },
+      { name: 'Indefinite Integration',            tag: 'Calculus',               status: 'coming' },
+      { name: 'Probability',                       tag: 'Statistics',             status: 'coming' },
+      { name: 'Definite Integration',              tag: 'Calculus',               status: 'coming' },
+      { name: 'Application of Integrals',          tag: 'Calculus',               status: 'coming' },
+      { name: 'Complex Number',                    tag: 'Algebra',                status: 'coming' },
+      { name: 'Differential Equation',             tag: 'Calculus',               status: 'coming' },
     ]
   }
 };
@@ -970,8 +1051,8 @@ const chapterContents = {
 
     <p>To translate between the two languages, we use this cheat code:</p>
     <div class="math-box">
-      $$1 \\text{ Degree} = \\frac{\\pi}{180} \\text{ Radians}$$
-      $$\\text{or } \\pi \\text{ Radians} = 180^{\\circ}$$
+      $$1 \\text{ Degree} = \\frac{\\pi}{180} \\text{ Radians} \\approx 0.02 \\text{ Radians}$$
+      $$1 \\text{ Radian} = \\frac{180}{\\pi} \\text{ Degrees} \\approx 57^{\\circ}$$
     </div>
     <p>So, if you have a right angle ($90^{\\circ}$), you just multiply: $90 \\times \\frac{\\pi}{180} = \\frac{\\pi}{2}$ radians.</p>
 
@@ -1122,15 +1203,31 @@ const chapterContents = {
     <p><em>Pro Tip:</em> Always try to break the angle using the Horizontal Line ($180^{\\circ}$ or $360^{\\circ}$) so the function (sin, cos, tan) doesn't change!</p>
     
     <div class="math-box" style="text-align: left; padding: 30px;">
-      <strong>Examples:</strong><br><br>
+      <strong>Examples using Horizontal Line ($180^{\\circ}$):</strong><br><br>
       • $\\sin(120^{\\circ})$ is in Room 2 (Sin is +ve). <br>
       $\\sin(180^{\\circ} - 60^{\\circ}) = +\\sin(60^{\\circ}) = \\frac{\\sqrt{3}}{2}$ <br><br>
       
       • $\\cos(210^{\\circ})$ is in Room 3 (Cos is -ve). <br>
-      $\\cos(180^{\\circ} + 30^{\\circ}) = -\\cos(30^{\\circ}) = -\\frac{\\sqrt{3}}{2}$ <br><br>
+      $\\cos(180^{\\circ} + 30^{\\circ}) = -\\cos(30^{\\circ}) = -\\frac{\\sqrt{3}}{2}$
+    </div>
 
-      • $\\tan(210^{\\circ})$ is in Room 3 (Tan is +ve). <br>
-      $\\tan(180^{\\circ} + 30^{\\circ}) = +\\tan(30^{\\circ}) = \\frac{1}{\\sqrt{3}}$
+    <div class="eli10-block">
+      <div class="eli10-title">⚠️ The "Vertical Line" Exception</div>
+      <p>What if you use the vertical line ($90^{\\circ}$ or $270^{\\circ}$, written as $(2n+1)\\frac{\\pi}{2}$)?</p>
+      <p><strong>The Rule:</strong> The function transforms into its "complementary" partner!</p>
+      <ul>
+        <li>$\\sin \\leftrightarrow \\cos$</li>
+        <li>$\\tan \\leftrightarrow \\cot$</li>
+        <li>$\\sec \\leftrightarrow \\csc$</li>
+      </ul>
+      <p>The sign (+ or -) is still decided by the <strong>original</strong> function and the ASTC room it lives in.</p>
+    </div>
+
+    <div class="math-box" style="text-align: left; padding: 30px;">
+      <strong>Example using Vertical Line ($90^{\\circ}$):</strong><br><br>
+      • $\\sin(120^{\\circ})$ is in Room 2 (Original function $\\sin$ is +ve). <br>
+      $\\sin(90^{\\circ} + 30^{\\circ}) = +\\cos(30^{\\circ}) = \\frac{\\sqrt{3}}{2}$ <br>
+      <em>(Notice how $\\sin$ turned into $\\cos$, but we still get the exact same answer!)</em>
     </div>
 
     <h3>Angles larger than 360°</h3>
@@ -1160,20 +1257,20 @@ const chapterContents = {
     <p>Here are all the critical formulas you must memorize to manipulate equations quickly in physics.</p>
     
     <div class="math-box">
-      <h3 style="color: var(--gold); margin-bottom: 20px;">Basic Identities</h3>
-      $$ \\sin^2\\theta + \\cos^2\\theta = 1 $$
-      $$ 1 + \\tan^2\\theta = \\sec^2\\theta $$
-      $$ 1 + \\cot^2\\theta = \\csc^2\\theta $$
+      <h3 style="color: var(--gold); margin-bottom: 20px;">The "Big 3" Formulas (Memorize These!)</h3>
+      $$ 1.\\; \\sin^2(\\theta) + \\cos^2(\\theta) = 1 $$
+      $$ 2.\\; \\sin(2\\theta) = 2 \\sin(\\theta) \\cos(\\theta) $$
+      $$ 3.\\; \\cos(2\\theta) = \\cos^2(\\theta) - \\sin^2(\\theta) = 1 - 2\\sin^2(\\theta) $$
+      
+      <h3 style="color: var(--gold); margin: 30px 0 20px;">Other Important Identities</h3>
+      $$ 1 + \\tan^2\\theta = \\sec^2\\theta \\quad \\text{and} \\quad 1 + \\cot^2\\theta = \\csc^2\\theta $$
       
       <h3 style="color: var(--gold); margin: 30px 0 20px;">Compound Angles</h3>
       $$ \\cos(A \\pm B) = \\cos A \\cos B \\mp \\sin A \\sin B $$
       $$ \\sin(A \\pm B) = \\sin A \\cos B \\pm \\cos A \\sin B $$
       $$ \\tan(A + B) = \\frac{\\tan A + \\tan B}{1 - \\tan A \\tan B} $$
       
-      <h3 style="color: var(--gold); margin: 30px 0 20px;">Double & Half Angles</h3>
-      $$ \\sin 2\\theta = 2 \\sin\\theta \\cos\\theta $$
-      $$ \\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta $$
-      <br>
+      <h3 style="color: var(--gold); margin: 30px 0 20px;">Half Angles</h3>
       $$ \\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2} \\quad \\text{and} \\quad \\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2} $$
       <br>
       $$ \\cos 15^{\\circ} = \\sqrt{\\frac{1 + \\cos 30^{\\circ}}{2}} \\quad \\text{and} \\quad \\sin 15^{\\circ} = \\sqrt{\\frac{1 - \\cos 30^{\\circ}}{2}} $$
