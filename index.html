@@ -716,28 +716,28 @@
   .trigo-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 30px 0;
-    font-size: 1.1rem;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-  }
-  .trigo-table th, .trigo-table td {
-    padding: 16px;
-    border-bottom: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-  }
-  .trigo-table th {
-    background: rgba(255,255,255,0.05);
-    color: var(--gold);
-    font-family: 'DM Mono', monospace;
-  }
-  .trigo-table td:first-child {
+    .trigo-table td:first-child {
     font-family: 'DM Mono', monospace;
     color: var(--physics);
     font-weight: bold;
     background: rgba(255,255,255,0.02);
+  }
+
+  /* Creator Credit */
+  .creator-credit {
+    position: fixed; bottom: 32px; left: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    z-index: 50;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .creator-credit:hover {
+    color: var(--gold);
+    transform: translateY(-2px);
   }
 
   /* Responsive */
@@ -758,6 +758,7 @@
     .hw-grid { grid-template-columns: 1fr; }
     .trigo-table { font-size: 0.85rem; }
     .trigo-table th, .trigo-table td { padding: 8px; }
+    .creator-credit { left: 24px; bottom: 24px; }
   }
 
   /* Scroll indicator */
@@ -791,6 +792,9 @@
 
 <!-- Stars -->
 <div class="stars" id="stars"></div>
+
+<!-- Credit -->
+<a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">IG: @phyrooshh</a>
 
 <!-- NAV -->
 <nav>
