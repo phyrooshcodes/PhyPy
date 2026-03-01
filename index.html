@@ -723,21 +723,40 @@
     background: rgba(255,255,255,0.02);
   }
 
-  /* Creator Credit */
+  /* Creator Credit - ANIMATED */
   .creator-credit {
-    position: fixed; bottom: 32px; left: 48px;
+    position: fixed; 
+    bottom: 32px; 
+    left: 48px;
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-muted);
     text-decoration: none;
-    z-index: 50;
-    transition: color 0.3s, transform 0.3s;
+    z-index: 100;
+    
+    /* Animated Gradient Text */
+    background: linear-gradient(270deg, var(--gold), var(--physics), var(--chemistry), var(--gold));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease infinite;
+    
+    /* Subtle glow */
+    filter: drop-shadow(0 0 4px rgba(201,168,76,0.3));
+    transition: filter 0.3s ease;
   }
+  
   .creator-credit:hover {
-    color: var(--gold);
-    transform: translateY(-2px);
+    filter: drop-shadow(0 0 10px rgba(74,158,255,0.8));
+    animation: gradientShift 1.5s ease infinite; /* Speeds up on hover */
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   /* Responsive */
@@ -794,7 +813,7 @@
 <div class="stars" id="stars"></div>
 
 <!-- Credit -->
-<a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">IG: @phyrooshh</a>
+<a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">⚡ @phyrooshh</a>
 
 <!-- NAV -->
 <nav>
