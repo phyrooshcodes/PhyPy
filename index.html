@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhyPy — Deep Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #0f0f18;
+    --surface: #13131e;
+    --border: rgba(255,255,255,0.07);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-glow: rgba(201,168,76,0.3);
+    --text: #e8e4d8;
+    --text-dim: rgba(232,228,216,0.45);
+    --text-muted: rgba(232,228,216,0.25);
+    --physics: #4a9eff;
+    --physics-dim: rgba(74,158,255,0.12);
+    --chemistry: #7cdb8a;
+    --chemistry-dim: rgba(124,219,138,0.12);
+    --math: #ff7eb3;
+    --math-dim: rgba(255,126,179,0.12);
+    --radius: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s, height 0.3s;
+  }
+  .cursor.hover { width: 14px; height: 14px; }
+  .cursor-ring.hover { width: 52px; height: 52px; border-color: var(--gold); }
+
+  /* Stars background */
+  .stars {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--dur) ease-in-out infinite alternate;
+    opacity: var(--op);
+  }
+  @keyframes twinkle {
+    from { opacity: var(--op); transform: scale(1); }
+    to { opacity: calc(var(--op) * 0.3); transform: scale(0.7); }
+  }
+
+  /* Pages */
+  .page {
+    position: absolute; inset: 0;
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .page.active {
+    opacity: 1; transform: translateY(0);
+    pointer-events: all;
+    position: relative;
+  }
+  .page.exit {
+    opacity: 0; transform: translateY(-20px);
+    pointer-events: none;
+    position: absolute;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.9) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-logo:hover { color: var(--gold); }
+  .nav-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ===== HOME PAGE ===== */
+  #home {
+    padding: 0;
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .hero {
+    padding: 160px 48px 80px;
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 480px;
+    font-weight: 400;
+  }
+
+  /* Subject cards */
+  .subjects-section {
+    padding: 40px 48px 100px;
+    flex: 1;
+  }
+  .subjects-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+  }
+
+  .subject-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 36px 36px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.4s;
+    animation: cardReveal 0.8s ease both;
+  }
+  .subject-card:nth-child(1) { animation-delay: 0.1s; }
+  .subject-card:nth-child(2) { animation-delay: 0.2s; }
+  .subject-card:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes cardReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .subject-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s;
+    border-radius: var(--radius);
+  }
+  .subject-card[data-subject="physics"]::before { background: radial-gradient(circle at 30% 50%, var(--physics-dim), transparent 70%); }
+  .subject-card[data-subject="chemistry"]::before { background: radial-gradient(circle at 30% 50%, var(--chemistry-dim), transparent 70%); }
+  .subject-card[data-subject="math"]::before { background: radial-gradient(circle at 30% 50%, var(--math-dim), transparent 70%); }
+
+  .subject-card:hover { transform: translateY(-6px); }
+  .subject-card:hover::before { opacity: 1; }
+  .subject-card[data-subject="physics"]:hover { border-color: rgba(74,158,255,0.3); box-shadow: 0 20px 60px rgba(74,158,255,0.1); }
+  .subject-card[data-subject="chemistry"]:hover { border-color: rgba(124,219,138,0.3); box-shadow: 0 20px 60px rgba(124,219,138,0.1); }
+  .subject-card[data-subject="math"]:hover { border-color: rgba(255,126,179,0.3); box-shadow: 0 20px 60px rgba(255,126,179,0.1); }
+
+  .card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    position: relative;
+  }
+  [data-subject="physics"] .card-icon { background: rgba(74,158,255,0.15); }
+  [data-subject="chemistry"] .card-icon { background: rgba(124,219,138,0.15); }
+  [data-subject="math"] .card-icon { background: rgba(255,126,179,0.15); }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  [data-subject="physics"] .card-num { color: var(--physics); }
+  [data-subject="chemistry"] .card-num { color: var(--chemistry); }
+  [data-subject="math"] .card-num { color: var(--math); }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .card-meta {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-chapters {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+  .card-arrow {
+    width: 32px; height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    transition: all 0.3s;
+  }
+  .subject-card:hover .card-arrow {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+    transform: rotate(45deg);
+  }
+
+  /* Decorative line at bottom of home */
+  .home-footer-line {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    z-index: 50;
+  }
+
+  /* ===== SUBJECT PAGE ===== */
+  #subject-page {
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  .subject-hero {
+    padding: 140px 48px 60px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .subject-hero-bg {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20vw;
+    font-weight: 600;
+    display: flex; align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    top: 10px;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: 36px;
+    transition: color 0.3s;
+  }
+  .back-btn:hover { color: var(--gold); }
+  .back-btn svg { transition: transform 0.3s; }
+  .back-btn:hover svg { transform: translateX(-4px); }
+
+  .subject-page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .subject-page-title .accent { font-style: italic; }
+
+  .subject-page-meta {
+    display: flex; align-items: center; gap: 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  /* Chapters */
+  .chapters-container {
+    padding: 48px 48px 100px;
+    max-width: 900px;
+  }
+  .chapters-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .chapters-header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .chapters-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .chapter-list { list-style: none; }
+
+  .chapter-item {
+    border-bottom: 1px solid var(--border);
+    animation: itemReveal 0.5s ease both;
+  }
+  @keyframes itemReveal {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .chapter-link {
+    display: flex; align-items: center; gap: 24px;
+    padding: 22px 0;
+    cursor: pointer;
+    transition: padding-left 0.3s cubic-bezier(0.23,1,0.32,1);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+  }
+  .chapter-link::after {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 2px;
+  }
+  .physics .chapter-link::after { background: var(--physics); }
+  .chemistry .chapter-link::after { background: var(--chemistry); }
+  .math .chapter-link::after { background: var(--math); }
+
+  .chapter-link:hover { padding-left: 16px; }
+  .chapter-link:hover::after { opacity: 1; }
+
+  .ch-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    width: 32px;
+    flex-shrink: 0;
+  }
+  .ch-info { flex: 1; }
+  .ch-name {
+    font-size: 0.98rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+  }
+  .chapter-link:hover .ch-name { color: var(--gold); }
+  .ch-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .ch-status {
+    display: flex; align-items: center; gap: 8px;
+    flex-shrink: 0;
+  }
+  .status-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .badge-coming { color: var(--text-muted); border-color: var(--border); }
+  .badge-available { 
+    color: var(--gold); 
+    border-color: rgba(201,168,76,0.3);
+    background: var(--gold-dim);
+  }
+  .badge-inprogress {
+    border-color: rgba(74,158,255,0.3);
+    background: rgba(74,158,255,0.08);
+  }
+  .physics .badge-inprogress { color: var(--physics); }
+  .chemistry .badge-inprogress { color: var(--chemistry); }
+  .math .badge-inprogress { color: var(--math); }
+
+  .ch-arrow {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: color 0.3s, transform 0.3s;
+    flex-shrink: 0;
+  }
+  .chapter-link:hover .ch-arrow { color: var(--gold); transform: translateX(4px); }
+
+  /* Progress bar */
+  .progress-section {
+    margin: 0 48px 0;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .progress-bar {
+    height: 3px;
+    background: var(--surface);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s cubic-bezier(0.23,1,0.32,1);
+    width: 0%;
+  }
+  .physics .progress-fill { background: linear-gradient(90deg, var(--physics), rgba(74,158,255,0.5)); }
+  .chemistry .progress-fill { background: linear-gradient(90deg, var(--chemistry), rgba(124,219,138,0.5)); }
+  .math .progress-fill { background: linear-gradient(90deg, var(--math), rgba(255,126,179,0.5)); }
+
+  /* Notification banner for "coming soon" chapters */
+  .coming-soon-banner {
+    margin: 0 48px 32px;
+    padding: 16px 20px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .coming-soon-banner .icon { font-size: 1rem; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 120px 24px 60px; }
+    .subjects-section { padding: 24px 24px 80px; }
+    .subjects-grid { grid-template-columns: 1fr; gap: 16px; }
+    .subject-hero { padding: 120px 24px 48px; }
+    .chapters-container, .progress-section, .coming-soon-banner { 
+      padding-left: 24px; padding-right: 24px; margin-left: 0; margin-right: 0; 
+    }
+    .coming-soon-banner { margin: 0 24px 24px; }
+    .progress-section { margin: 0 24px; }
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: fixed; bottom: 32px; right: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 50;
+    animation: fadeHint 3s ease 2s both;
+  }
+  @keyframes fadeHint {
+    from { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } to { opacity: 0; }
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goHome()">Phy<span>Py</span></div>
+  <div class="nav-right" id="nav-context">Home</div>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="home">
+  <section class="hero">
+    <div class="hero-eyebrow">PhyPy — Joint Entrance Examination</div>
+    <h1 class="hero-title">
+      Master every<br>
+      concept, <em>deeply.</em>
+    </h1>
+    <p class="hero-sub">A personal study companion built chapter by chapter — animated explanations, structured thinking, lasting clarity.</p>
+  </section>
+
+  <section class="subjects-section">
+    <div class="subjects-label">Choose your subject</div>
+    <div class="subjects-grid">
+
+      <div class="subject-card" data-subject="physics" onclick="openSubject('physics')">
+        <div class="card-icon">⚛️</div>
+        <div class="card-num">01 — Subject</div>
+        <h2 class="card-title">Physics</h2>
+        <p class="card-desc">From kinematics to quantum mechanics — build intuition for the laws governing reality.</p>
+        <div class="card-meta">
+          <span class="card-chapters">32 chapters planned</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </div>
+
+      <div class="subject-card" data-subject="chemistry" onclick="openSubject('chemistry')">
+        <div class="card-icon">🧪</div>
+        <div class="card-num">02 — Subject</div>
+        <h2 class="card-title">Chemistry</h2>
+        <p class="card-desc">Physical, organic, inorganic — understand the molecular world with deep clarity.</p>
+        <div class="card-meta">
+          <span class="card-chapters">31 chapters planned</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </div>
+
+      <div class="subject-card" data-subject="math" onclick="openSubject('math')">
+        <div class="card-icon">∑</div>
+        <div class="card-num">03 — Subject</div>
+        <h2 class="card-title">Mathematics</h2>
+        <p class="card-desc">Calculus, algebra, coordinate geometry — sharpen your problem-solving architecture.</p>
+        <div class="card-meta">
+          <span class="card-chapters">30 chapters planned</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="home-footer-line"></div>
+  <div class="scroll-hint">Explore</div>
+</div>
+
+<!-- ===== SUBJECT PAGE ===== -->
+<div class="page" id="subject-page">
+  <section class="subject-hero" id="subject-hero">
+    <div class="subject-hero-bg" id="subject-hero-bg"></div>
+    <div class="back-btn" onclick="goHome()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to subjects
+    </div>
+    <h1 class="subject-page-title" id="subject-page-title"></h1>
+    <p id="subject-page-desc" style="font-size:0.9rem;color:var(--text-dim);max-width:500px;line-height:1.7;margin-top:12px;"></p>
+    <div class="subject-page-meta" id="subject-page-meta"></div>
+  </section>
+
+  <!-- Progress -->
+  <div class="progress-section" id="progress-section">
+    <div class="progress-label">
+      <span>Chapter Progress</span>
+      <span id="progress-text">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="coming-soon-banner">
+    <span class="icon">✦</span>
+    <span>Chapters are added as you study them. Click any available chapter to start learning with animated explanations.</span>
+  </div>
+
+  <!-- Chapter list -->
+  <div class="chapters-container" id="chapters-container">
+    <div class="chapters-header">
+      <span class="chapters-header-label">All Chapters</span>
+      <span class="chapters-count" id="chapters-count"></span>
+    </div>
+    <ul class="chapter-list" id="chapter-list"></ul>
+  </div>
+</div>
+
+<script>
+// ─── Data ───
+const subjects = {
+  physics: {
+    label: 'Physics',
+    desc: 'Understand forces, motion, energy, waves, and the quantum world through deep conceptual animations and structured problem-solving.',
+    accent: 'var(--physics)',
+    chapters: [
+      { name: 'Mathematical Tools',              tag: 'Foundations',            status: 'coming' },
+      { name: 'Motion in a Straight Line',       tag: 'Kinematics',             status: 'coming' },
+      { name: 'Motion in a Plane',               tag: 'Kinematics',             status: 'coming' },
+      { name: 'Laws of Motion',                  tag: 'Mechanics',              status: 'coming' },
+      { name: 'Work, Energy and Power',          tag: 'Mechanics',              status: 'coming' },
+      { name: 'Circular Motion',                 tag: 'Mechanics',              status: 'coming' },
+      { name: 'Centre of Mass & Collisions',     tag: 'Mechanics',              status: 'coming' },
+      { name: 'Rotational Motion',               tag: 'Mechanics',              status: 'coming' },
+      { name: 'Mechanical Properties of Solids', tag: 'Properties of Matter',   status: 'coming' },
+      { name: 'Mechanical Properties of Fluids', tag: 'Properties of Matter',   status: 'coming' },
+      { name: 'Dual Nature of Matter',           tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Thermal Properties of Heat',      tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Kinetic Theory',                  tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Thermodynamics',                  tag: 'Heat & Thermodynamics',  status: 'coming' },
+      { name: 'Electric Charges and Fields',     tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Electrostatic Potential',         tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Gravitation',                     tag: 'Mechanics',              status: 'coming' },
+      { name: 'Current Electricity',             tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Capacitance',                     tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Moving Charges and Magnetism',    tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Electromagnetic Induction',       tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Magnetism and Matter',            tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Alternating Current',             tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Ray Optics and Optical Instruments', tag: 'Optics',             status: 'coming' },
+      { name: 'Oscillations',                    tag: 'Wave Physics',           status: 'coming' },
+      { name: 'Atoms',                           tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Electromagnetic Waves',           tag: 'Electromagnetism',       status: 'coming' },
+      { name: 'Nuclei',                          tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Waves',                           tag: 'Wave Physics',           status: 'coming' },
+      { name: 'Wave Optics',                     tag: 'Optics',                 status: 'coming' },
+      { name: 'Semiconductors',                  tag: 'Modern Physics',         status: 'coming' },
+      { name: 'Units and Measurements',          tag: 'Foundations',            status: 'coming' },
+    ]
+  },
+  chemistry: {
+    label: 'Chemistry',
+    desc: 'From atomic structure to organic reactions — build a mental model of how matter behaves, transforms, and why it does so.',
+    accent: 'var(--chemistry)',
+    chapters: [
+      // Physical Chemistry
+      { name: 'Some Basic Concepts of Chemistry',         tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Redox Reaction',                           tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Solutions',                                tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Structure of Atom',                        tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Chemical Kinetics',                        tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Thermodynamics',                           tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Chemical Equilibrium',                     tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Ionic Equilibrium',                        tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Electrochemistry',                         tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'The Solid State',                          tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'States of Matter',                         tag: 'Physical Chemistry',   status: 'coming' },
+      { name: 'Surface Chemistry',                        tag: 'Physical Chemistry',   status: 'coming' },
+      // Organic Chemistry
+      { name: 'Some Basic Principles of Org. Chem. I',   tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Some Basic Principles of Org. Chem. II',  tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Some Basic Principles of Org. Chem. III', tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Hydrocarbon',                              tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Practical Organic Chemistry',              tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Biomolecules',                             tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Haloalkanes and Haloarenes',               tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Alcohols, Phenols and Ethers',             tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Amines',                                   tag: 'Organic Chemistry',    status: 'coming' },
+      { name: 'Aldehydes, Ketones and Carboxylic Acids',  tag: 'Organic Chemistry',    status: 'coming' },
+      // Inorganic Chemistry
+      { name: 'Classification of Elements',               tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Chemical Bonding and Molecular Structure', tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'The d and f-Block Elements',               tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Coordination Compounds',                   tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'P-block Elements',                         tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Principles of Metallurgy',                 tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'S-block Elements',                         tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'Hydrogen and its Compounds',               tag: 'Inorganic Chemistry',  status: 'coming' },
+      { name: 'General Principles and Processes',         tag: 'Inorganic Chemistry',  status: 'coming' },
+    ]
+  },
+  math: {
+    label: 'Mathematics',
+    desc: 'Develop mathematical maturity through calculus, algebra, geometry, and combinatorics — with a focus on elegant problem-solving.',
+    accent: 'var(--math)',
+    chapters: [
+      { name: 'Basic Mathematics',                     tag: 'Foundations',            status: 'coming' },
+      { name: 'Quadratic Equations',                   tag: 'Algebra',                status: 'coming' },
+      { name: 'Sequence and Series',                   tag: 'Algebra',                status: 'coming' },
+      { name: 'Trigonometric Ratios & Identities',     tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Trigonometric Equations',               tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Permutations and Combinations',         tag: 'Combinatorics',          status: 'coming' },
+      { name: 'Binomial Theorem',                      tag: 'Algebra',                status: 'coming' },
+      { name: 'Straight Lines',                        tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Circles',                               tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Statistics',                            tag: 'Statistics',             status: 'coming' },
+      { name: 'Solution of Triangle',                  tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Conic Sections: Parabola',              tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Conic Sections: Ellipse',               tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Conic Sections: Hyperbola',             tag: 'Coordinate Geometry',    status: 'coming' },
+      { name: 'Determinants',                          tag: 'Algebra',                status: 'coming' },
+      { name: 'Matrices',                              tag: 'Algebra',                status: 'coming' },
+      { name: 'Sets',                                  tag: 'Foundations',            status: 'coming' },
+      { name: 'Relations and Functions',               tag: 'Foundations',            status: 'coming' },
+      { name: 'Inverse Trigonometric Functions',       tag: 'Trigonometry',           status: 'coming' },
+      { name: 'Limit, Continuity and Differentiability', tag: 'Calculus',            status: 'coming' },
+      { name: 'Method of Differentiation',             tag: 'Calculus',               status: 'coming' },
+      { name: 'Vector Algebra',                        tag: '3D Mathematics',         status: 'coming' },
+      { name: 'Application of Derivatives',            tag: 'Calculus',               status: 'coming' },
+      { name: 'Three Dimensional Geometry',            tag: '3D Mathematics',         status: 'coming' },
+      { name: 'Indefinite Integration',                tag: 'Calculus',               status: 'coming' },
+      { name: 'Probability',                           tag: 'Statistics',             status: 'coming' },
+      { name: 'Definite Integration',                  tag: 'Calculus',               status: 'coming' },
+      { name: 'Application of Integrals',              tag: 'Calculus',               status: 'coming' },
+      { name: 'Complex Number',                        tag: 'Algebra',                status: 'coming' },
+      { name: 'Differential Equation',                 tag: 'Calculus',               status: 'coming' },
+    ]
+  }
+};
+
+let currentSubject = null;
+
+// ─── Stars ───
+(function createStars() {
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 1.5 + 0.5;
+    s.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+      --op: ${Math.random() * 0.5 + 0.1};
+      --dur: ${Math.random() * 3 + 2}s;
+      animation-delay: ${Math.random() * 4}s;
+    `;
+    container.appendChild(s);
+  }
+})();
+
+// ─── Cursor ───
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top = e.clientY + 'px';
+  }, 60);
+});
+document.addEventListener('mouseover', e => {
+  if (e.target.closest('[onclick], .chapter-link, .back-btn, .nav-logo')) {
+    cursor.classList.add('hover');
+    cursorRing.classList.add('hover');
+  } else {
+    cursor.classList.remove('hover');
+    cursorRing.classList.remove('hover');
+  }
+});
+
+// ─── Navigation ───
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => {
+    if (p.id === id) {
+      p.classList.remove('exit');
+      p.classList.add('active');
+    } else {
+      p.classList.add('exit');
+      p.classList.remove('active');
+      setTimeout(() => p.classList.remove('exit'), 500);
+    }
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goHome() {
+  showPage('home');
+  document.getElementById('nav-context').textContent = 'Home';
+  currentSubject = null;
+}
+
+function openSubject(key) {
+  currentSubject = key;
+  const s = subjects[key];
+
+  // Set hero
+  document.getElementById('subject-page-title').innerHTML = `<span class="accent">${s.label}</span>`;
+  document.getElementById('subject-page-desc').textContent = s.desc;
+  document.getElementById('subject-hero-bg').textContent = s.label;
+  document.getElementById('nav-context').textContent = s.label;
+
+  // Meta
+  const total = s.chapters.length;
+  const available = s.chapters.filter(c => c.status !== 'coming').length;
+  document.getElementById('subject-page-meta').innerHTML = `
+    <div class="meta-dot" style="background:${s.accent}"></div>
+    <span>${total} Chapters Total</span>
+    <span>·</span>
+    <span>${available} Available</span>
+    <span>·</span>
+    <span>JEE Main + Advanced</span>
+  `;
+
+  // Set class for color theming
+  const subjectPage = document.getElementById('subject-page');
+  subjectPage.className = 'page ' + key;
+  document.getElementById('progress-section').className = 'progress-section ' + key;
+
+  // Progress
+  const pct = Math.round((available / total) * 100);
+  document.getElementById('progress-text').textContent = pct + '%';
+  document.getElementById('chapters-count').textContent = `${total} chapters`;
+
+  // Build chapter list
+  const list = document.getElementById('chapter-list');
+  list.innerHTML = '';
+  s.chapters.forEach((ch, i) => {
+    const delay = i * 0.05;
+    const badgeHtml = ch.status === 'available'
+      ? `<span class="status-badge badge-available">Available</span>`
+      : ch.status === 'inprogress'
+      ? `<span class="status-badge badge-inprogress">In Progress</span>`
+      : `<span class="status-badge badge-coming">Coming Soon</span>`;
+
+    const li = document.createElement('li');
+    li.className = 'chapter-item';
+    li.style.animationDelay = delay + 's';
+    li.innerHTML = `
+      <div class="chapter-link" ${ch.status !== 'coming' ? 'onclick="chapterClick(\'' + key + '\', ' + i + ')"' : ''}>
+        <span class="ch-num">${String(i + 1).padStart(2, '0')}</span>
+        <div class="ch-info">
+          <div class="ch-name">${ch.name}</div>
+          <div class="ch-tag">${ch.tag}</div>
+        </div>
+        <div class="ch-status">${badgeHtml}</div>
+        <span class="ch-arrow">${ch.status !== 'coming' ? '→' : '·'}</span>
+      </div>
+    `;
+    list.appendChild(li);
+  });
+
+  showPage('subject-page');
+
+  // Animate progress bar
+  setTimeout(() => {
+    document.getElementById('progress-fill').style.width = pct + '%';
+  }, 600);
+}
+
+function chapterClick(subject, idx) {
+  const ch = subjects[subject].chapters[idx];
+  // Placeholder — chapter page would load here
+  alert(`📖 "${ch.name}"\n\nThis chapter is being built! Animated explanations and concept maps coming soon.`);
+}
+</script>
+</body>
+</html>
