@@ -131,6 +131,11 @@
     background: linear-gradient(to bottom, rgba(10,10,15,0.95) 0%, transparent 100%);
     backdrop-filter: blur(4px);
   }
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
@@ -725,16 +730,13 @@
 
   /* Creator Credit - ANIMATED */
   .creator-credit {
-    position: fixed; 
-    bottom: 32px; 
-    left: 48px;
     font-family: 'DM Mono', monospace;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
-    z-index: 100;
+    display: inline-block;
     
     /* Animated Gradient Text */
     background: linear-gradient(270deg, var(--gold), var(--physics), var(--chemistry), var(--gold));
@@ -745,11 +747,12 @@
     
     /* Subtle glow */
     filter: drop-shadow(0 0 4px rgba(201,168,76,0.3));
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, transform 0.3s ease;
   }
   
   .creator-credit:hover {
     filter: drop-shadow(0 0 10px rgba(74,158,255,0.8));
+    transform: translateY(-2px);
     animation: gradientShift 1.5s ease infinite; /* Speeds up on hover */
   }
 
@@ -777,7 +780,7 @@
     .hw-grid { grid-template-columns: 1fr; }
     .trigo-table { font-size: 0.85rem; }
     .trigo-table th, .trigo-table td { padding: 8px; }
-    .creator-credit { left: 24px; bottom: 24px; }
+    .nav-left { gap: 16px; } /* Slightly smaller gap on mobile */
   }
 
   /* Scroll indicator */
@@ -812,12 +815,12 @@
 <!-- Stars -->
 <div class="stars" id="stars"></div>
 
-<!-- Credit -->
-<a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">⚡ @phyrooshh</a>
-
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="goHome()">Phy<span>Py</span></div>
+  <div class="nav-left">
+    <div class="nav-logo" onclick="goHome()">Phy<span>Py</span></div>
+    <a href="https://instagram.com/phyrooshh" target="_blank" class="creator-credit">⚡ @phyrooshh</a>
+  </div>
   <div class="nav-right" id="nav-context">Home</div>
 </nav>
 
