@@ -1672,7 +1672,7 @@ const chapterContents = {
 
     <!-- Practice Arena -->
     <div class="practice-box">
-      <h3>⚔️ Practice Arena</h3>
+      <h3>⚔️ Practice Arena — Lecture 01</h3>
       <p>Pen gheesne par hi sawal banenge! Evaluate the following trigonometric values based on what you just learned.</p>
       
       <div class="hw-grid">
@@ -1687,6 +1687,793 @@ const chapterContents = {
         <div class="hw-item"><div class="hw-num">9</div> $\\tan(2145^{\\circ})$</div>
         <div class="hw-item"><div class="hw-num">10</div> $\\sin(3660^{\\circ})$</div>
       </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════
+         LECTURE 02 — THE SEQUEL
+    ═══════════════════════════════════════════════ -->
+
+    <div style="margin: 100px 0 60px; display:flex; align-items:center; gap:20px;">
+      <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, var(--border));"></div>
+      <div style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); white-space:nowrap; padding: 8px 20px; border:1px solid rgba(201,168,76,0.3); border-radius:100px; background:rgba(201,168,76,0.05);">
+        ✦ Lecture 02 Continues
+      </div>
+      <div style="flex:1; height:1px; background:linear-gradient(to left, transparent, var(--border));"></div>
+    </div>
+
+    <p style="font-size:1.1rem; color:var(--text-dim); line-height:1.8; margin-bottom: 40px;">You've mastered the angles. Now for the <strong style="color:var(--text);">superweapons</strong> — four powerful shortcuts that physicists use constantly. Once you know these, so many problems that look terrifying become trivially easy.</p>
+
+
+    <!-- ─── SECTION 6: SMALL ANGLE APPROXIMATION ─── -->
+    <h2>6. The Lazy Physicist's Shortcut (Small Angle Approximation)</h2>
+
+    <p>Here's a crazy idea: what if instead of calculating $\\sin(3^{\\circ})$ or $\\tan(2^{\\circ})$, you could just replace it with the angle itself? Sounds wrong, but it actually works perfectly when the angle is tiny!</p>
+
+    <div class="eli10-block" style="border-color:var(--physics);">
+      <div class="eli10-title" style="color:var(--physics);">🧠 Why Does This Work? The Juice Behind It</div>
+      <p>Imagine you're walking along a circle's edge. When the arc is tiny, the arc, the straight-line height (sin), and the straight-line base (tan) are all basically the same length. Think of an ant walking on a basketball — from the ant's view, the basketball surface looks completely flat. That's exactly the same idea!</p>
+    </div>
+
+    <div class="math-box" style="border: 2px solid var(--physics); background: rgba(74,158,255,0.04);">
+      <h3 style="color:var(--physics); margin-bottom:20px; font-family:'Instrument Sans',sans-serif; font-size:1.1rem; text-align:left;">⚡ The 3 Golden Rules (θ in radians, θ &lt; 10°)</h3>
+      $$ \\sin\\theta \\approx \\theta $$
+      $$ \\cos\\theta \\approx 1 $$
+      $$ \\tan\\theta \\approx \\theta $$
+      <p style="font-size:0.82rem; color:var(--text-muted); margin:16px 0 0; text-align:left;">⚠️ θ MUST be in radians, not degrees. Always convert first!</p>
+    </div>
+
+    <h3>The 5° Rule — How Accurate Is "Approximate"?</h3>
+    <p>GG Bhaiya's guide from the notes:</p>
+    <div class="quadrant-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="quadrant-box" style="border-color:rgba(124,219,138,0.3); background:rgba(124,219,138,0.05);">
+        <span style="color:var(--chemistry); font-size:1.1rem; font-family:'Instrument Sans',sans-serif;">θ &lt; 5°</span>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin:0;">Answer is <strong style="color:var(--text);">extremely close</strong> to the exact value. Use it without hesitation.</p>
+      </div>
+      <div class="quadrant-box" style="border-color:rgba(255,126,179,0.3); background:rgba(255,126,179,0.05);">
+        <span style="color:var(--math); font-size:1.1rem; font-family:'Instrument Sans',sans-serif;">5° &lt; θ &lt; 10°</span>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin:0;">Approximation still works. Some error exists but acceptable for physics problems.</p>
+      </div>
+    </div>
+
+    <h3>🔑 The Golden Key: How to Convert for This</h3>
+    <p>The formula is simple: multiply the degree value by $\\frac{\\pi}{180}$ to get radians, then that number IS your answer.</p>
+
+    <div class="math-box" style="border-color:var(--gold);">
+      <p style="text-align:left; color:var(--text-dim); font-size:0.9rem; margin-bottom:12px;">Worked Examples from class:</p>
+      $$ \\sin(2^{\\circ}) \\approx 2 \\times \\frac{\\pi}{180} = \\frac{\\pi}{90} \\approx 0.0349 $$
+      $$ \\tan(4^{\\circ}) \\approx 4 \\times \\frac{\\pi}{180} = \\frac{\\pi}{45} $$
+      $$ \\cos(3^{\\circ}) \\approx 1 \\quad \\text{(cos is always 1 for small angles!)} $$
+      $$ \\tan(1^{\\circ}) \\approx 1 \\times \\frac{\\pi}{180} = \\frac{\\pi}{180} $$
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">💎 Bonus Sawal — Real Physics Application</div>
+      <p>A ramp makes an angle of $3^{\\circ}$ with the ground. The base length is 15 cm. Find the height <em>h</em>.</p>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:16px;">
+        $$ \\frac{h}{15} = \\tan(3^{\\circ}) \\approx 3 \\times \\frac{\\pi}{180} = \\frac{\\pi}{60} $$
+        $$ h = 15 \\times \\frac{\\pi}{60} = \\frac{\\pi}{4} \\text{ cm} $$
+      </div>
+      <p style="margin-top:12px; font-size:0.9rem; color:var(--text-dim);">See how elegant that is? No calculator needed — just clean algebra.</p>
+    </div>
+
+
+    <!-- ─── SECTION 7: BINOMIAL APPROXIMATION ─── -->
+    <h2>7. The Cheat Code for Hard Powers (Binomial Approximation)</h2>
+
+    <p>Imagine you're asked to compute $(1.001)^{200}$ on a physics exam with no calculator. Terrifying! But with binomial approximation, it's a 5-second mental calculation. This is one of the most powerful shortcuts in all of JEE physics.</p>
+
+    <div class="eli10-block" style="border-color:var(--chemistry);">
+      <div class="eli10-title" style="color:var(--chemistry);">🧠 The Full Expansion (Don't Memorize — Just Understand)</div>
+      <p>The binomial theorem says:</p>
+      $$(1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\cdots$$
+      <p style="margin-top:12px; font-size:0.9rem; color:var(--text-dim);">Notice: if $x = 0.01$, then $x^2 = 0.0001$, $x^3 = 0.000001$... they get insanely small. So we just <strong style="color:var(--text);">throw them all away</strong> and keep only the first two terms!</p>
+    </div>
+
+    <div class="math-box" style="border: 2px solid var(--chemistry); background: rgba(124,219,138,0.04);">
+      <h3 style="color:var(--chemistry); margin-bottom:20px; font-family:'Instrument Sans',sans-serif; font-size:1.1rem; text-align:left;">⚡ The 4 Shortcuts (when x &lt; 0.05, i.e. x &lt;&lt; 1)</h3>
+      $$(1+x)^n \\approx 1 + nx$$
+      $$(1+x)^{-n} \\approx 1 - nx$$
+      $$(1-x)^n \\approx 1 - nx$$
+      $$(1-x)^{-n} \\approx 1 + nx$$
+      <p style="text-align:left; font-size:0.82rem; color:var(--text-muted); margin-top:16px;">Pattern: the sign of the correction term = sign of exponent × sign of x.</p>
+    </div>
+
+    <h3>Worked Examples — Step by Step</h3>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(124,219,138,0.25); background:rgba(124,219,138,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--chemistry); letter-spacing:0.2em; margin-bottom:10px;">Q.25</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;">$(1.001)^2$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin:0;">$(1 + 0.001)^2 \\approx 1 + 2(0.001)$</p>
+        <p style="font-size:0.9rem; color:var(--chemistry); margin:6px 0 0; font-weight:600;">$= 1.002$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(124,219,138,0.25); background:rgba(124,219,138,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--chemistry); letter-spacing:0.2em; margin-bottom:10px;">Q.26</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;">$(1.003)^{-2}$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin:0;">$(1 + 0.003)^{-2} \\approx 1 + (-2)(0.003)$</p>
+        <p style="font-size:0.9rem; color:var(--chemistry); margin:6px 0 0; font-weight:600;">$= 1 - 0.006 = 0.994$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(124,219,138,0.25); background:rgba(124,219,138,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--chemistry); letter-spacing:0.2em; margin-bottom:10px;">Q.27</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;">$(1.005)^{-4}$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin:0;">$(1 + 0.005)^{-4} \\approx 1 + (-4)(0.005)$</p>
+        <p style="font-size:0.9rem; color:var(--chemistry); margin:6px 0 0; font-weight:600;">$= 1 - 0.020 = 0.980$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(124,219,138,0.25); background:rgba(124,219,138,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--chemistry); letter-spacing:0.2em; margin-bottom:10px;">Q.28</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;">$(1.0002)^{-3}$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin:0;">$(1 + 0.0002)^{-3} \\approx 1 + (-3)(0.0002)$</p>
+        <p style="font-size:0.9rem; color:var(--chemistry); margin:6px 0 0; font-weight:600;">$= 1 - 0.0006 = 0.9994$</p>
+      </div>
+    </div>
+
+    <h3>When the Number Isn't Near 1 — Factor It Out</h3>
+    <p>Sometimes the number doesn't look like $(1 + x)$. The trick: <strong style="color:var(--text);">factor out the nearest round number</strong> to create the $(1 \pm x)$ form.</p>
+
+    <div class="math-box" style="border-color:var(--chemistry);">
+      <p style="text-align:left; color:var(--text-dim); font-size:0.9rem; margin-bottom:16px;">Q.30 — $\\dfrac{1}{\\sqrt{99}}$</p>
+      $$\\frac{1}{\\sqrt{99}} = (99)^{-1/2} = (100 - 1)^{-1/2} = (100)^{-1/2}\\left(1 - \\frac{1}{100}\\right)^{-1/2}$$
+      $$= \\frac{1}{10}\\left(1 - 0.01\\right)^{-1/2} \\approx \\frac{1}{10}\\left(1 + \\frac{0.01}{2}\\right) = \\frac{1.005}{10} \\approx 0.1005$$
+    </div>
+
+    <div class="math-box" style="border-color:var(--chemistry); margin-top:16px;">
+      <p style="text-align:left; color:var(--text-dim); font-size:0.9rem; margin-bottom:16px;">Q.31 — $\\sqrt{99}$</p>
+      $$\\sqrt{99} = (100-1)^{1/2} = 10\\left(1 - \\frac{1}{100}\\right)^{1/2} \\approx 10\\left(1 - \\frac{1}{200}\\right) = \\frac{199}{20} = 9.95$$
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">💎 Bonus Sawal — Gravity at Height h</div>
+      <p>This is a real physics formula you'll use in Gravitation. Gravity decreases as you go up. The exact formula is messy. The approximation makes it clean:</p>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin:16px 0;">
+        $$g_h = \\frac{GM_e}{R_e^2\\left(1+\\frac{h}{R_e}\\right)^2} = g_s\\left(1 + \\frac{h}{R_e}\\right)^{-2}$$
+        $$\\text{When } h \\ll R_e: \\quad g_h \\approx g_s\\left(1 - \\frac{2h}{R_e}\\right)$$
+      </div>
+      <p style="font-size:0.9rem; color:var(--text-dim);">That $\\left(1 - \\frac{2h}{R_e}\\right)$ was unlocked by binomial approximation. You'll use this formula in Gravitation chapter!</p>
+    </div>
+
+    <div class="practice-box" style="border-color:var(--chemistry);">
+      <h3 style="color:var(--chemistry);">⚔️ Practice Arena — Approximations</h3>
+      <p>Use small angle or binomial approximation as needed.</p>
+      <div class="hw-grid">
+        <div class="hw-item"><div class="hw-num">11</div> $\\sin(5^{\\circ})$</div>
+        <div class="hw-item"><div class="hw-num">12</div> $\\tan(8^{\\circ})$</div>
+        <div class="hw-item"><div class="hw-num">13</div> $\\cos(6^{\\circ})$</div>
+        <div class="hw-item"><div class="hw-num">14</div> $\\sqrt{0.96}$</div>
+        <div class="hw-item"><div class="hw-num">15</div> $(0.97)^4$</div>
+        <div class="hw-item"><div class="hw-num">16</div> $(1.006)^{-1/3}$</div>
+        <div class="hw-item"><div class="hw-num">17</div> $\\dfrac{1}{1.002}$</div>
+        <div class="hw-item"><div class="hw-num">18</div> $(104)^{1/4}$</div>
+      </div>
+    </div>
+
+
+    <!-- ─── SECTION 8: AP AND GP ─── -->
+    <h2>8. The Number Patterns (A.P. and G.P.)</h2>
+
+    <p>Physics is full of patterns — bouncing balls that travel less each bounce, pendulums, waves. Two patterns show up so often that they have their own names: <strong style="color:var(--text);">Arithmetic Progression</strong> and <strong style="color:var(--text);">Geometric Progression</strong>. Once you understand them, you can calculate the sum of infinite sequences in seconds.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:32px 0;">
+
+      <!-- AP Card -->
+      <div style="background:var(--surface); border:1px solid rgba(74,158,255,0.25); border-radius:16px; padding:28px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; right:0; width:80px; height:80px; background:radial-gradient(circle, rgba(74,158,255,0.1), transparent); border-radius:0 16px 0 80px;"></div>
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.25em; margin-bottom:14px;">ARITHMETIC PROGRESSION</div>
+        <div class="math-box" style="background:transparent; border:none; padding:0; text-align:left; font-size:1rem; margin:0 0 16px;">
+          $$a,\\ a{+}d,\\ a{+}2d,\\ a{+}3d,\\ \\ldots$$
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:12px;"><strong style="color:var(--text);">a</strong> = first term &nbsp;·&nbsp; <strong style="color:var(--text);">d</strong> = common difference (subtract any term from the next one)</p>
+        <div class="math-box" style="background:rgba(74,158,255,0.04); border-color:rgba(74,158,255,0.25); font-size:0.95rem; padding:14px; margin:0;">
+          $$T_n = a + (n-1)d$$
+          $$S_n = \\frac{n}{2}[2a + (n-1)d]$$
+          $$S_n = \\frac{n}{2}[\\text{first} + \\text{last}]$$
+        </div>
+      </div>
+
+      <!-- GP Card -->
+      <div style="background:var(--surface); border:1px solid rgba(201,168,76,0.25); border-radius:16px; padding:28px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; right:0; width:80px; height:80px; background:radial-gradient(circle, rgba(201,168,76,0.1), transparent); border-radius:0 16px 0 80px;"></div>
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.25em; margin-bottom:14px;">GEOMETRIC PROGRESSION</div>
+        <div class="math-box" style="background:transparent; border:none; padding:0; text-align:left; font-size:1rem; margin:0 0 16px;">
+          $$a,\\ ar,\\ ar^2,\\ ar^3,\\ \\ldots$$
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:12px;"><strong style="color:var(--text);">a</strong> = first term &nbsp;·&nbsp; <strong style="color:var(--text);">r</strong> = common ratio (divide any term by the one before it)</p>
+        <div class="math-box" style="background:rgba(201,168,76,0.04); border-color:rgba(201,168,76,0.25); font-size:0.95rem; padding:14px; margin:0;">
+          $$T_n = ar^{n-1}$$
+          $$S_n = \\frac{a(1-r^n)}{1-r}$$
+          $$S_\\infty = \\frac{a}{1-r} \\quad (\\text{only when } |r| < 1)$$
+        </div>
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">🧠 $S_\\infty$ — How Can Infinite Terms Have a Finite Sum?</div>
+      <p>Imagine a bouncing ball. It bounces half as high each time: 1m, 0.5m, 0.25m, 0.125m... forever. <em>Infinite</em> bounces. Yet the total distance is just 2m. Why? Because each term gets so small so fast that they stop mattering. When $|r| &lt; 1$, the series converges to a single beautiful number: $\\frac{a}{1-r}$.</p>
+    </div>
+
+    <h3>Worked Examples</h3>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(201,168,76,0.25);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.2em; margin-bottom:10px;">Q.38 — GP sum to ∞</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">$1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">$a = 1$, $r = \\frac{1}{2}$, $|r| &lt; 1$ ✓</p>
+        <p style="font-size:0.9rem; color:var(--gold); margin:6px 0 0; font-weight:600;">$S_\\infty = \\dfrac{1}{1 - \\frac{1}{2}} = 2$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.39 — AP sum</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">$3 + 6 + 9 + 12 + \\cdots + 120$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">AP: $a=3$, $d=3$. Find $n$: $120 = 3+(n-1)3 \\Rightarrow n=40$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin:6px 0 0; font-weight:600;">$S_{40} = \\frac{40}{2}[3+120] = 20 \\times 123 = 2460$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(201,168,76,0.25);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.2em; margin-bottom:10px;">Q.40 — Alternating GP</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">$1 - \\frac{1}{2} + \\frac{1}{4} - \\frac{1}{8} + \\cdots$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">$r = -\\frac{1}{2}$, $|r| &lt; 1$ ✓</p>
+        <p style="font-size:0.9rem; color:var(--gold); margin:6px 0 0; font-weight:600;">$S_\\infty = \\dfrac{1}{1-(-\\frac{1}{2})} = \\dfrac{1}{\\frac{3}{2}} = \\dfrac{2}{3}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.37 — Physics GP</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">$V + Ve + Ve^2 + \\cdots$ ($e &lt; 1$)</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">$a = V$, $r = e$, $|e| &lt; 1$ ✓</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin:6px 0 0; font-weight:600;">$S_\\infty = \\dfrac{V}{1-e}$</p>
+      </div>
+    </div>
+
+    <h3>The Important Series (Starred by GG Bhaiya)</h3>
+    <div class="math-box" style="border-color:var(--gold); text-align:left; padding:30px;">
+      <div style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.25em; margin-bottom:20px;">IMPORTANT SERIES — MUST KNOW FOR JEE</div>
+      <p style="margin-bottom:4px; font-size:0.85rem; color:var(--text-dim);">Sum of first n natural numbers:</p>
+      $$\\sum_{k=1}^{n} k = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}$$
+      <p style="margin:16px 0 4px; font-size:0.85rem; color:var(--text-dim);">Sum of squares:</p>
+      $$\\sum_{k=1}^{n} k^2 = 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}$$
+      <p style="margin:16px 0 4px; font-size:0.85rem; color:var(--text-dim);">Sum of cubes:</p>
+      $$\\sum_{k=1}^{n} k^3 = 1^3 + 2^3 + \\cdots + n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$$
+      <p style="margin:16px 0 4px; font-size:0.85rem; color:var(--text-dim);">Taylor series (used in calculus & waves):</p>
+      $$\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\frac{x^7}{7!} + \\cdots$$
+      $$\\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\frac{x^6}{6!} + \\cdots$$
+      $$\\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\cdots$$
+    </div>
+
+
+    <!-- ─── SECTION 9: STRAIGHT LINES ─── -->
+    <h2>9. Drawing Maps of Motion (Straight Lines)</h2>
+
+    <p>In physics, we draw graphs constantly — velocity vs. time, force vs. displacement, distance vs. time. Every graph is a line. To read a graph correctly, you need to understand one number: <strong style="color:var(--text);">the slope</strong>. It tells you everything about how fast things are changing.</p>
+
+    <div class="eli10-block" style="border-color:var(--math);">
+      <div class="eli10-title" style="color:var(--math);">🧠 What Is Slope, Really?</div>
+      <p>Think of a slope like a ramp. A steep ramp — steep slope. A flat road — zero slope. A downhill — negative slope. In physics, slope tells you the <em>rate of change</em>. On a velocity-time graph, the slope = acceleration. On a distance-time graph, the slope = speed. Slope is arguably the single most important quantity you read from a graph.</p>
+    </div>
+
+    <div class="math-box" style="border: 2px solid var(--math); background:rgba(255,126,179,0.04);">
+      <h3 style="color:var(--math); margin-bottom:20px; font-family:'Instrument Sans',sans-serif; font-size:1.1rem; text-align:left;">⚡ Slope — The Core Formula</h3>
+      $$ m = \\tan\\theta = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\Delta y}{\\Delta x} $$
+      <p style="text-align:left; font-size:0.82rem; color:var(--text-muted); margin-top:12px;">θ is the angle the line makes with the <strong>positive x-axis</strong>.</p>
+    </div>
+
+    <h3>The 6 Slopes You Must Visualise</h3>
+
+    <div class="svg-container">
+      <svg viewBox="0 0 560 220" class="concept-svg" style="width:100%; max-width:600px;">
+        <defs>
+          <style>.sl { font-family: monospace; font-size: 9px; }</style>
+        </defs>
+        <!-- Axes grid titles -->
+        <text x="46" y="12" class="sl" fill="var(--math)">45° → m=1</text>
+        <text x="136" y="12" class="sl" fill="var(--math)">30° → m=1/√3</text>
+        <text x="256" y="12" class="sl" fill="var(--math)">120° → m=-√3</text>
+        <text x="366" y="12" class="sl" fill="var(--math)">0° → m=0</text>
+        <text x="456" y="12" class="sl" fill="var(--math)">90° → m=∞</text>
+
+        <!-- Box 1: 45deg -->
+        <line x1="20" y1="110" x2="100" y2="110" stroke="var(--border)" stroke-width="1"/>
+        <line x1="60" y1="70" x2="60" y2="150" stroke="var(--border)" stroke-width="1"/>
+        <line x1="30" y1="140" x2="90" y2="80" stroke="var(--math)" stroke-width="2.5"/>
+        <text x="35" y="125" class="sl" fill="var(--text-muted)">45°</text>
+
+        <!-- Box 2: 30deg -->
+        <line x1="110" y1="110" x2="190" y2="110" stroke="var(--border)" stroke-width="1"/>
+        <line x1="150" y1="70" x2="150" y2="150" stroke="var(--border)" stroke-width="1"/>
+        <line x1="118" y1="130" x2="185" y2="95" stroke="var(--math)" stroke-width="2.5"/>
+        <text x="122" y="122" class="sl" fill="var(--text-muted)">30°</text>
+
+        <!-- Box 3: 120deg (negative slope) -->
+        <line x1="225" y1="110" x2="305" y2="110" stroke="var(--border)" stroke-width="1"/>
+        <line x1="265" y1="70" x2="265" y2="150" stroke="var(--border)" stroke-width="1"/>
+        <line x1="230" y1="85" x2="300" y2="135" stroke="var(--math)" stroke-width="2.5"/>
+        <text x="250" y="107" class="sl" fill="var(--text-muted)">120°</text>
+
+        <!-- Box 4: 0deg (flat) -->
+        <line x1="335" y1="110" x2="415" y2="110" stroke="var(--border)" stroke-width="1"/>
+        <line x1="375" y1="70" x2="375" y2="150" stroke="var(--border)" stroke-width="1"/>
+        <line x1="342" y1="110" x2="408" y2="110" stroke="var(--math)" stroke-width="2.5"/>
+        <text x="345" y="124" class="sl" fill="var(--text-muted)">0°</text>
+
+        <!-- Box 5: 90deg (vertical) -->
+        <line x1="430" y1="110" x2="510" y2="110" stroke="var(--border)" stroke-width="1"/>
+        <line x1="470" y1="70" x2="470" y2="150" stroke="var(--border)" stroke-width="1"/>
+        <line x1="470" y1="75" x2="470" y2="148" stroke="var(--math)" stroke-width="2.5"/>
+        <text x="474" y="124" class="sl" fill="var(--text-muted)">90°</text>
+
+        <!-- Labels row -->
+        <text x="46" y="185" class="sl" fill="var(--text-dim)" text-anchor="middle">Positive</text>
+        <text x="150" y="185" class="sl" fill="var(--text-dim)" text-anchor="middle">Gentle +</text>
+        <text x="265" y="185" class="sl" fill="var(--text-dim)" text-anchor="middle">Negative</text>
+        <text x="375" y="185" class="sl" fill="var(--text-dim)" text-anchor="middle">Zero</text>
+        <text x="470" y="185" class="sl" fill="var(--text-dim)" text-anchor="middle">Undefined</text>
+      </svg>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--math);">
+      <div class="eli10-title" style="color:var(--math);">💡 Key Insight — Straight Line vs. Curve</div>
+      <p>A <strong style="color:var(--text);">straight line</strong> has the same slope at every single point. That's what makes it straight. A <strong style="color:var(--text);">curve</strong> has a different slope at each point — and the slope at any specific point equals the tangent of the angle of the tiny tangent line drawn there. This becomes calculus later, but for now just know: <em>slope of a curve at a point = tan(angle of tangent at that point)</em>.</p>
+    </div>
+
+    <h3>The Equation of a Straight Line</h3>
+
+    <div class="math-box" style="border:2px solid var(--math); background:rgba(255,126,179,0.04);">
+      <h3 style="color:var(--math); text-align:left; font-family:'Instrument Sans',sans-serif; margin-bottom:20px;">Two Forms You Must Know:</h3>
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Form 1 — Slope-Intercept (when you know slope and y-intercept):</p>
+      $$ y = mx + c $$
+      <p style="text-align:left; font-size:0.82rem; color:var(--text-muted);">$m$ = slope, $c$ = where the line crosses the y-axis</p>
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin:20px 0 8px;">Form 2 — Two-Point Form (when you know two points on the line):</p>
+      $$ (y - y_1) = \\frac{y_2 - y_1}{x_2 - x_1}(x - x_1) $$
+    </div>
+
+    <h3>Worked Examples</h3>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.41</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">A line makes 60° with x-axis. Find slope.</p>
+        <p style="font-size:0.85rem; margin:8px 0 0;">$m = \\tan(60°) = \\sqrt{3}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.42</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$3y = 9x + 18$. Find slope.</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">$y = 3x + 6$</p>
+        <p style="font-size:0.85rem; margin:4px 0 0;">$m = 3 = \\tan\\theta \\Rightarrow \\theta = \\tan^{-1}(3)$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.43</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$4y + 3x = 8$. Find slope.</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">$y = -\\frac{3}{4}x + 2$</p>
+        <p style="font-size:0.85rem; margin:4px 0 0;">$m = -\\frac{3}{4} = \\tan(180°-37°) = -\\tan(37°)$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.44</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">Points $(0, 2)$ and $(5, 3)$. Find equation.</p>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">$m = \\frac{3-2}{5-0} = \\frac{1}{5}$</p>
+        <p style="font-size:0.85rem; margin:4px 0 0;">$y = \\frac{x}{5} + 2$</p>
+      </div>
+    </div>
+
+    <div class="practice-box" style="border-color:var(--math);">
+      <h3 style="color:var(--math);">⚔️ Practice Arena — Straight Lines</h3>
+      <p>Find equations or slopes as indicated. Total: 46 questions (4 bonus sawal included).</p>
+      <div class="hw-grid">
+        <div class="hw-item"><div class="hw-num">19</div> Line at 143° with y-intercept $(0, 5)$</div>
+        <div class="hw-item"><div class="hw-num">20</div> Line at 30° below x-axis through $(0, -2)$</div>
+        <div class="hw-item"><div class="hw-num">21</div> Line at 37° with y-intercept $(0, -4)$</div>
+        <div class="hw-item"><div class="hw-num">22</div> Line through $(0, 3)$ and $(4, 0)$</div>
+      </div>
+    </div>
+
+
+    <!-- ─── LECTURE 06 DIVIDER ─── -->
+    <div style="display:flex; align-items:center; gap:16px; margin:80px 0 60px;">
+      <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, var(--physics));"></div>
+      <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--physics); white-space:nowrap;">
+        ✦ Lecture 06 · Vectors
+      </div>
+      <div style="flex:1; height:1px; background:linear-gradient(to left, transparent, var(--physics));"></div>
+    </div>
+
+    <p style="font-size:1.1rem; color:var(--text-dim); line-height:1.8; margin-bottom:40px;">
+      GG Bhaiya's shayari for this lecture: <em style="color:var(--gold);">"Tum bhatak rahe ho, aao disha dikha dun — mai vector hun sahab, sabko raah dikhata hun."</em><br>
+      A vector has two superpowers regular numbers don't — a <strong style="color:var(--text);">magnitude</strong> (how big) AND a <strong style="color:var(--text);">direction</strong> (which way). Numbers without direction are called <strong style="color:var(--text);">scalars</strong>. Think of it like this: speed is a scalar (just "5 m/s"), but velocity is a vector ("5 m/s going North"). Knowing the direction changes everything in physics!
+    </p>
+
+    <!-- ─── SECTION 10: ANALYTICAL METHOD ─── -->
+    <h2>10. Adding Arrows — The Analytical Method</h2>
+
+    <p>Imagine two friends are pulling a heavy box. Friend A pulls with 10 N to the right. Friend B pulls with 10 N diagonally at 60°. What's the total force on the box? This is a vector addition problem. The total is called the <strong style="color:var(--text);">Resultant</strong>, written as $\\vec{R}$.</p>
+
+    <div class="eli10-block" style="border-color:var(--physics);">
+      <div class="eli10-title" style="color:var(--physics);">🧠 Why Can't We Just Add the Numbers?</div>
+      <p>If the forces both pointed right, sure — just add them: 10 + 10 = 20 N. But when they point in <em>different</em> directions, you have to account for the angle between them. The formula below does exactly that using our old friend, cosine!</p>
+    </div>
+
+    <div class="math-box" style="border:2px solid var(--physics); background:rgba(74,158,255,0.04);">
+      <h3 style="color:var(--physics); font-family:'Instrument Sans',sans-serif; font-size:1.1rem; text-align:left; margin-bottom:16px;">⚡ The Master Formula for Resultant Magnitude</h3>
+      $$|\\vec{R}| = |\\vec{A} + \\vec{B}| = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}$$
+      <p style="font-size:0.85rem; color:var(--text-dim); text-align:left; margin-top:12px;">where $\\theta$ is the angle <strong style="color:var(--text);">between</strong> the two vectors (measured from tail to tail).</p>
+    </div>
+
+    <h3>The Sandwich Inequality — Range of Resultant</h3>
+    <p>Here's a powerful fact: no matter what angle you choose, the resultant is always <em>sandwiched</em> between two extreme values:</p>
+
+    <div class="math-box" style="border-color:var(--gold);">
+      $$|A - B| \\leq |\\vec{A} + \\vec{B}| \\leq A + B$$
+      <p style="font-size:0.85rem; color:var(--text-dim); margin-top:12px; text-align:left;">
+        <strong style="color:var(--text);">Maximum</strong> (R_max = A + B) happens when both vectors point in the same direction ($\\theta = 0°$).<br>
+        <strong style="color:var(--text);">Minimum</strong> (R_min = |A − B|) happens when they point in opposite directions ($\\theta = 180°$).
+      </p>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">🔑 Q.1 — Resultant of 3N and 5N vectors</div>
+      <p>What values can the resultant take?</p>
+      <p style="margin-top:8px;">$R_{min} = |5 - 3| = 2\\text{ N}$ &nbsp; and &nbsp; $R_{max} = 5 + 3 = 8\\text{ N}$</p>
+      <p style="margin-top:8px; font-size:0.9rem; color:var(--text-dim);">So only values in the range $2 \\leq R \\leq 8$ are possible. Options like 0 N, 1 N, 10 N, 12 N are impossible! The valid answers from the class question are: <strong style="color:var(--text);">2 N, 5 N, 6 N</strong>.</p>
+    </div>
+
+    <!-- ─── DIRECTION FORMULA ─── -->
+    <h3>Which Way Does the Resultant Point?</h3>
+    <p>Knowing the size is not enough — we also need the angle $\\alpha$ that the resultant makes with vector $\\vec{A}$.</p>
+
+    <div class="math-box" style="border-color:var(--physics);">
+      <h3 style="color:var(--physics); font-family:'Instrument Sans',sans-serif; font-size:1rem; text-align:left; margin-bottom:16px;">📐 Direction Formulas</h3>
+      $$\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta} \\quad \\text{(angle } \\alpha \\text{ from } \\vec{A}\\text{)}$$
+      $$\\tan\\beta = \\frac{A\\sin\\theta}{B + A\\cos\\theta} \\quad \\text{(angle } \\beta \\text{ from } \\vec{B}\\text{)}$$
+      <p style="font-size:0.85rem; color:var(--text-dim); text-align:left; margin-top:12px;">Note: angle made by $\\vec{R}$ with $\\vec{B}$ is always $(\\theta - \\alpha)$.</p>
+    </div>
+
+    <h3>Worked Examples from Class</h3>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.2 · A=4N, B=3N, θ=90°</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$R = \\sqrt{16 + 9 + 0} = 5\\text{ N}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:6px;">$\\tan\\alpha = \\frac{3\\sin90°}{4 + 3\\cos90°} = \\frac{3}{4}$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\alpha = 37°$ from $\\vec{A}$, $\\beta = 53°$ from $\\vec{B}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.3 · A=10N, B=10N, θ=120°</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$R = \\sqrt{100 + 100 + 2(10)(10)(-\\frac{1}{2})} = 10\\text{ N}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:6px;">$\\tan\\alpha = \\frac{10 \\cdot \\frac{\\sqrt{3}}{2}}{10 + 10(-\\frac{1}{2})} = \\sqrt{3}$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\alpha = 60°$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.4 · A=√3N, B=1N, θ=90°</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$R = \\sqrt{3 + 1} = 2\\text{ N}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:6px;">$\\tan\\alpha = \\frac{1}{\\sqrt{3}} \\Rightarrow \\alpha = 30°$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">Resultant makes 30° with $\\vec{A}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.5 · A=20N, B=20N, θ=120°</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$R = \\sqrt{400+400+2(20)(20)(-\\frac{1}{2})} = 20\\sqrt{3}\\text{ N}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:6px;">Equal magnitudes → bisects angle</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\alpha = 60°$ from each vector</p>
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">⭐ Q.7 — Full Worked Solution (4N and 6N at 60°)</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        $$R = \\sqrt{16 + 36 + 2(4)(6)\\cdot\\frac{1}{2}} = \\sqrt{16+36+24} = \\sqrt{96} = 4\\sqrt{6}\\text{ N}$$
+        $$\\tan\\alpha = \\frac{6\\sin60°}{4 + 6\\cos60°} = \\frac{6 \\cdot \\frac{\\sqrt{3}}{2}}{4 + 3} = \\frac{3\\sqrt{3}}{7}$$
+        $$\\alpha = \\tan^{-1}\\!\\left(\\frac{3\\sqrt{3}}{7}\\right) \\text{ from } \\vec{A}\\text{ (4N side)}$$
+        <p style="font-size:0.85rem; color:var(--text-dim); text-align:left; margin-top:10px;">The resultant leans closer to the <strong style="color:var(--text);">6N vector</strong> because bigger magnitude has more "pull" on the direction.</p>
+      </div>
+    </div>
+
+    <!-- ─── SPECIAL CASES ─── -->
+    <h2>11. Special Cases — When the Angle is Special</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:28px 0;">
+      <div class="quadrant-box" style="border-color:rgba(74,158,255,0.3); background:rgba(74,158,255,0.04);">
+        <span style="color:var(--physics); font-size:1rem; font-family:'Instrument Sans',sans-serif; margin-bottom:8px;">① Parallel (θ = 0°)</span>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$\\cos0° = 1$</p>
+        $$R_{max} = A + B$$
+        <p style="font-size:0.8rem; color:var(--text-muted);">Both pushing same way → maximum possible resultant</p>
+      </div>
+      <div class="quadrant-box" style="border-color:rgba(255,126,179,0.3); background:rgba(255,126,179,0.04);">
+        <span style="color:var(--math); font-size:1rem; font-family:'Instrument Sans',sans-serif; margin-bottom:8px;">② Anti-Parallel (θ = 180°)</span>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$\\cos180° = -1$</p>
+        $$R_{min} = |A - B|$$
+        <p style="font-size:0.8rem; color:var(--text-muted);">Tug-of-war → they partially cancel</p>
+      </div>
+      <div class="quadrant-box" style="border-color:rgba(201,168,76,0.3); background:rgba(201,168,76,0.04);">
+        <span style="color:var(--gold); font-size:1rem; font-family:'Instrument Sans',sans-serif; margin-bottom:8px;">③ Perpendicular (θ = 90°)</span>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$\\cos90° = 0$</p>
+        $$R = \\sqrt{A^2 + B^2}$$
+        <p style="font-size:0.8rem; color:var(--text-muted);">Pure Pythagoras! Your best friend.</p>
+      </div>
+    </div>
+
+    <!-- ─── EQUAL MAGNITUDE SPECIAL CASE ─── -->
+    <h3>⭐ Golden Rule: Equal Magnitude Vectors</h3>
+    <p>When $|\\vec{A}| = |\\vec{B}|$, the resultant always points exactly in the middle — along the <strong style="color:var(--text);">angle bisector</strong>. And the angle it makes with each vector is exactly $\\theta/2$.</p>
+
+    <div class="math-box" style="border-color:var(--gold);">
+      <h3 style="color:var(--gold); text-align:left; font-family:'Instrument Sans',sans-serif; font-size:1rem; margin-bottom:12px;">When |A| = |B| = x:</h3>
+      $$\\tan\\alpha = \\frac{x\\sin\\theta}{x + x\\cos\\theta} = \\frac{\\sin\\theta}{1+\\cos\\theta}$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin:12px 0;">Using the identity $\\frac{\\sin\\theta}{1+\\cos\\theta} = \\tan\\frac{\\theta}{2}$ (derived from double-angle formula $\\cos2A = 2\\cos^2A - 1$):</p>
+      $$\\boxed{\\alpha = \\frac{\\theta}{2}}$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">Resultant bisects the angle. Larger vector wins if magnitudes are unequal: if $|A| > |B|$, then $\\beta > \\alpha$ (resultant closer to A).</p>
+    </div>
+
+    <!-- ─── PROPERTIES OF VECTOR ADDITION ─── -->
+    <h2>12. Properties of Vector Addition</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:28px 0;">
+      <div style="background:var(--surface); border:1px solid rgba(74,158,255,0.25); border-radius:16px; padding:24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.25em; margin-bottom:12px;">COMMUTATIVE LAW</div>
+        $$\\vec{A} + \\vec{B} = \\vec{B} + \\vec{A}$$
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:8px;">Order doesn't matter! You can add them either way and get the same resultant. Like 3 + 5 = 5 + 3.</p>
+      </div>
+      <div style="background:var(--surface); border:1px solid rgba(201,168,76,0.25); border-radius:16px; padding:24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.25em; margin-bottom:12px;">ASSOCIATIVE LAW</div>
+        $$\\vec{A} + (\\vec{B} + \\vec{C}) = (\\vec{A} + \\vec{B}) + \\vec{C}$$
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:8px;">Grouping doesn't matter! You can add them in any order.</p>
+      </div>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-dim); line-height:1.8; background:var(--surface); padding:20px; border-radius:12px; border:1px solid var(--border);">
+      ⚠️ <strong style="color:var(--text);">Note:</strong> The resultant of $\\vec{A}$ and $\\vec{B}$ always lies in the same plane as $\\vec{A}$ and $\\vec{B}$ (the "common plane" of the two vectors). You can't have a resultant jumping into a different dimension!
+    </p>
+
+    <!-- ─── LAW OF POLYGON ─── -->
+    <h2>13. Adding More Than Two Vectors — The Law of Polygon</h2>
+
+    <p>What if you have 3, 4, or even 100 vectors to add? No problem. The <strong style="color:var(--text);">Law of Polygon</strong> says: arrange all vectors head-to-tail (like a chain). The resultant is the arrow that closes the chain — drawn from the tail of the first to the head of the last.</p>
+
+    <div class="eli10-block" style="border-color:var(--chemistry);">
+      <div class="eli10-title" style="color:var(--chemistry);">🧠 Think of it Like Directions on a Map</div>
+      <p>You walk 2 km North, then 3 km East, then 1 km North-East. Where are you now? The direct arrow from your starting point to your final position is the <em>resultant</em> — that's the Law of Polygon.</p>
+    </div>
+
+    <div class="math-box" style="border-color:var(--chemistry);">
+      $$\\vec{R} = \\vec{A} + \\vec{B} + \\vec{C} + \\vec{D}$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:12px;">In a polygon, if all vectors are arranged in the same order (head to tail), the resultant is represented by the <strong style="color:var(--text);">closing side in the opposite order</strong>.</p>
+    </div>
+
+    <h3>⭐ Zero Resultant — The Closed Polygon Rule</h3>
+    <p>If you go around the polygon and come back exactly where you started (like walking around a block), the resultant is <strong style="color:var(--text);">zero</strong>! Mathematically: if the head of the last vector meets the tail of the first vector, all vectors cancel out.</p>
+
+    <div class="math-box" style="border-color:var(--physics);">
+      $$\\vec{A} + \\vec{B} + \\vec{C} + \\vec{D} + \\vec{E} = \\vec{0} \\quad \\text{(closed polygon)}$$
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">⭐ Q.8 — 100 Coplanar Vectors, Equal Magnitude, Equally Spaced</div>
+      <p>"If 100 coplanar vectors each of magnitude 10 units are equally inclined, find the resultant."</p>
+      <p style="margin-top:10px; font-size:0.9rem; color:var(--text-dim);">Equal angular separation = $\\frac{360°}{100} = 3.6°$. Since all 100 vectors are <em>coplanar</em>, have <em>equal magnitude</em>, and are at <em>equal angular separation</em> — they form a perfectly symmetric pattern. Every vector is exactly cancelled by another pointing opposite. The resultant = <strong style="color:var(--physics);">0</strong>.</p>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px; font-size:0.9rem;">
+        <strong style="color:var(--text);">Golden Rule:</strong> If $n$ coplanar vectors of equal magnitude are at equal angular separation ($\\frac{360°}{n}$), their resultant is always <strong style="color:var(--physics);">zero</strong> — regardless of $n$. Works for $n=2$, $n=3$, $n=4$, ... any $n$.
+      </div>
+    </div>
+
+    <!-- ─── SUBTRACTION ─── -->
+    <h2>14. Subtraction of Vectors</h2>
+
+    <p>Vector subtraction is just sneaky addition! $\\vec{A} - \\vec{B}$ means you flip $\\vec{B}$ around (make it $-\\vec{B}$) and then add it to $\\vec{A}$. Flipping means the arrow points in the completely opposite direction — same magnitude, reversed direction.</p>
+
+    <div class="math-box" style="border-color:var(--math);">
+      $$\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:12px;">If $\\theta$ is the angle between $\\vec{A}$ and $\\vec{B}$, then the angle between $\\vec{A}$ and $(-\\vec{B})$ is $(180° - \\theta)$. So:</p>
+      $$|\\vec{A} - \\vec{B}| = \\sqrt{A^2 + B^2 + 2AB\\cos(180°-\\theta)} = \\sqrt{A^2 + B^2 - 2AB\\cos\\theta}$$
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--math);">
+      <div class="eli10-title" style="color:var(--math);">🧠 Properties of Vector Subtraction</div>
+      <p>Unlike addition, subtraction is <strong style="color:var(--text);">NOT commutative</strong>: $\\vec{A} - \\vec{B} \\neq \\vec{B} - \\vec{A}$ (they're opposite in direction).</p>
+      <p style="margin-top:8px;">It's also <strong style="color:var(--text);">NOT associative</strong>: $(\\vec{A} - \\vec{B}) - \\vec{C} \\neq \\vec{A} - (\\vec{B} - \\vec{C})$.</p>
+      <p style="margin-top:8px; font-size:0.9rem; color:var(--text-dim);">Special case — when both vectors have <strong style="color:var(--text);">equal magnitude</strong> $a$:</p>
+      $$|\\vec{A} - \\vec{B}| = \\sqrt{2a^2 - 2a^2\\cos\\theta} = 2a\\sin\\frac{\\theta}{2}$$
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.9 · |A|=5N, |B|=10N, θ=37°</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:6px;">Find $|\\vec{A} - \\vec{B}|$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$= \\sqrt{25 + 100 - 2(5)(10)\\cdot\\frac{4}{5}}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$= \\sqrt{125 - 80} = \\sqrt{45} = 3\\sqrt{5}$ N</p>
+        <p style="font-size:0.9rem; color:var(--math); margin-top:6px; font-weight:600;">Answer: $3\\sqrt{5}$ N ✓</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--math); letter-spacing:0.2em; margin-bottom:10px;">Q.12 (HW) · |A−B| = |A+B|</div>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:6px;">Find angle between $\\vec{A}$ and $\\vec{B}$.</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">$A^2+B^2-2AB\\cos\\theta = A^2+B^2+2AB\\cos\\theta$</p>
+        <p style="font-size:0.82rem; color:var(--text-dim);">$\\Rightarrow 4AB\\cos\\theta = 0 \\Rightarrow \\cos\\theta = 0$</p>
+        <p style="font-size:0.9rem; color:var(--math); margin-top:6px; font-weight:600;">$\\theta = 90° = \\pi/2$ ✓</p>
+      </div>
+    </div>
+
+    <!-- ─── SCALAR MULTIPLICATION ─── -->
+    <h2>15. Multiplication of a Vector by a Scalar</h2>
+
+    <p>Multiplying a vector by a number (scalar) is simple: the number <strong style="color:var(--text);">stretches or shrinks</strong> the arrow, but doesn't change its direction — unless the number is <strong style="color:var(--text);">negative</strong>, in which case the arrow flips around!</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <span style="color:var(--physics); font-family:'Instrument Sans',sans-serif;">$2\\vec{A}$</span>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:8px;">Same direction, twice as long. Magnitude = $2A$.</p>
+      </div>
+      <div class="quadrant-box" style="border-color:rgba(201,168,76,0.25); background:rgba(201,168,76,0.04);">
+        <span style="color:var(--gold); font-family:'Instrument Sans',sans-serif;">$3\\vec{A}$</span>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:8px;">Same direction, three times as long. Magnitude = $3A$.</p>
+      </div>
+      <div class="quadrant-box" style="border-color:rgba(255,126,179,0.25); background:rgba(255,126,179,0.04);">
+        <span style="color:var(--math); font-family:'Instrument Sans',sans-serif;">$-2\\vec{A}$</span>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:8px;"><strong>Opposite</strong> direction, twice as long. The negative sign flips the arrow!</p>
+      </div>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-dim); line-height:1.7;">A special case: $\\hat{i}$ (i-hat) is a <strong style="color:var(--text);">unit vector</strong> — an arrow of length exactly 1 pointing in the x-direction. So $2\\hat{i} = \\hat{i} + \\hat{i}$ means two unit-length steps in the x-direction. Similarly $3\\hat{i} = \\hat{i} + \\hat{i} + \\hat{i}$.</p>
+
+    <!-- ─── COMPONENTS ─── -->
+    <h2>16. Breaking a Vector into Pieces — Components in 2D</h2>
+
+    <p>Here's the most useful trick in all of vector physics: any vector can be broken into two <strong style="color:var(--text);">perpendicular pieces</strong> — one along the x-axis and one along the y-axis. This is called <strong style="color:var(--text);">Resolution of Vectors</strong>.</p>
+
+    <div class="eli10-block" style="border-color:var(--physics);">
+      <div class="eli10-title" style="color:var(--physics);">🧠 Why Do We Do This?</div>
+      <p>Remember how adding vectors with angles was complicated? Once you break everything into x and y components, you can just <em>add all the x-parts together</em> and <em>add all the y-parts together</em>. Then use Pythagoras at the end. Like magic — any complex problem becomes two simple additions!</p>
+    </div>
+
+    <div class="math-box" style="border:2px solid var(--physics); background:rgba(74,158,255,0.04);">
+      <h3 style="color:var(--physics); text-align:left; font-family:'Instrument Sans',sans-serif; font-size:1.1rem; margin-bottom:16px;">⚡ The Component Formulas</h3>
+      <p style="text-align:left; font-size:0.9rem; color:var(--text-dim); margin-bottom:12px;">For vector $\\vec{A}$ making angle $\\theta$ with the <strong style="color:var(--text);">x-axis</strong>:</p>
+      $$A_x = A\\cos\\theta \\quad \\text{(x-component, closer to x-axis → cosine)}$$
+      $$A_y = A\\sin\\theta \\quad \\text{(y-component, farther from x-axis → sine)}$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:12px; padding:10px; background:rgba(255,255,255,0.03); border-radius:8px;">
+        <strong style="color:var(--gold);">GG Bhaiya's Golden Rule:</strong> Whichever axis the vector makes angle $\\theta$ with — that axis gets $\\cos\\theta$. The other axis gets $\\sin\\theta$.
+      </p>
+    </div>
+
+    <h3>Worked Examples from Class</h3>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.17 · A=100, θ=37° from x-axis</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_x = 100\\cos37° = 80$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_y = 100\\sin37° = 60$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\vec{A} = 80\\hat{i} + 60\\hat{j}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.18 · F=50N, 37° from y-axis (2nd quadrant)</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">Angle from y-axis → sin goes to y, cos to x</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_x = -50\\sin37° = -30$ (left, so negative)</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_y = 50\\cos37° = 40$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\vec{F} = -30\\hat{i} + 40\\hat{j}$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.19 · A=10, θ=30° from y-axis (tilted system)</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_{x'} = 10\\cos30° = 5\\sqrt{3}$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$A_{y'} = 10\\sin30° = 5$</p>
+      </div>
+      <div class="quadrant-box" style="text-align:left; border-color:rgba(74,158,255,0.25); background:rgba(74,158,255,0.04);">
+        <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--physics); letter-spacing:0.2em; margin-bottom:10px;">Q.20 · F=200N, 53° from x-axis</div>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$F_x = 200\\sin53° = 160$</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">$F_y = 200\\cos53° = 120$</p>
+        <p style="font-size:0.9rem; color:var(--physics); margin-top:6px; font-weight:600;">$\\vec{F} = 160\\hat{i} + 120\\hat{j}$</p>
+      </div>
+    </div>
+
+    <!-- ─── READING COMPONENT FORM ─── -->
+    <h3>Reading Component Form: $\\vec{A} = A_x\\hat{i} + A_y\\hat{j}$</h3>
+
+    <p>Sometimes you're given the component form and need to find magnitude, angle, or unit vector. Here's the toolkit:</p>
+
+    <div class="math-box" style="border-color:var(--gold);">
+      <h3 style="color:var(--gold); text-align:left; font-family:'Instrument Sans',sans-serif; font-size:1rem; margin-bottom:16px;">For $\\vec{A} = A_x\\hat{i} + A_y\\hat{j}$:</h3>
+      $$|\\vec{A}| = \\sqrt{A_x^2 + A_y^2}$$
+      $$\\tan\\theta = \\frac{A_y}{A_x} \\quad \\text{(angle from x-axis)}$$
+      $$\\hat{A} = \\frac{\\vec{A}}{|\\vec{A}|} = \\frac{A_x\\hat{i} + A_y\\hat{j}}{\\sqrt{A_x^2+A_y^2}} \\quad \\text{(unit vector, always magnitude = 1)}$$
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">⭐ Q.25 — Full Breakdown of $\\vec{A} = 3\\hat{i} + 4\\hat{j}$</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">(i) $A_x = 3$ &nbsp; (ii) $A_y = 4$ &nbsp; (iii) $|\\vec{A}| = \\sqrt{9+16} = 5$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">(iv) Angle from x-axis: $\\tan\\alpha = \\frac{4}{3}$ so $\\alpha = 53°$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">(v) Angle from y-axis: $90° - 53° = 37°$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">(vi) Unit vector: $\\hat{A} = \\frac{3}{5}\\hat{i} + \\frac{4}{5}\\hat{j}$</p>
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--physics);">
+      <div class="eli10-title" style="color:var(--physics);">⭐ Q.27 — If $\\vec{A} = 0.6\\hat{i} + b\\hat{j}$ is a unit vector, find $b$.</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">Unit vector means $|\\vec{A}| = 1$:</p>
+        $$1 = \\sqrt{(0.6)^2 + b^2} \\Rightarrow 1 = 0.36 + b^2 \\Rightarrow b^2 = 0.64 \\Rightarrow b = 0.8$$
+      </div>
+    </div>
+
+    <!-- ─── 3D VECTORS ─── -->
+    <h2>17. Vectors in 3D — Adding a Third Dimension</h2>
+
+    <p>In real life, things move in 3 dimensions! We add a third component along the z-axis using $\\hat{k}$ (k-hat). Everything works the same — just one more term.</p>
+
+    <div class="math-box" style="border:2px solid var(--physics); background:rgba(74,158,255,0.04);">
+      $$\\vec{A} = A_x\\hat{i} + A_y\\hat{j} + A_z\\hat{k}$$
+      $$|\\vec{A}| = \\sqrt{A_x^2 + A_y^2 + A_z^2}$$
+      <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:12px;">$\\hat{i}$, $\\hat{j}$, $\\hat{k}$ are unit vectors in the x, y, z directions respectively. They're all perpendicular to each other — like the three edges meeting at a corner of a room.</p>
+    </div>
+
+    <!-- ─── VECTOR ADDITION BY COMPONENTS ─── -->
+    <h2>18. Adding Multiple Vectors Using Components</h2>
+
+    <p>This is the master technique. No matter how many vectors, no matter what angles — this method always works cleanly. GG Bhaiya's 4-step recipe:</p>
+
+    <div style="background:var(--surface); border:1px solid rgba(201,168,76,0.3); border-radius:16px; padding:28px; margin:28px 0;">
+      <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.25em; margin-bottom:20px;">GG BHAIYA'S 4-STEP RECIPE</div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:28px; height:28px; border-radius:50%; background:rgba(74,158,255,0.2); border:1px solid var(--physics); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--physics); flex-shrink:0;">1</div>
+          <p style="font-size:0.9rem; color:var(--text-dim); margin:0; line-height:1.6;"><strong style="color:var(--text);">Bring all tails to one point.</strong> Draw all vectors starting from the same origin point.</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:28px; height:28px; border-radius:50%; background:rgba(74,158,255,0.2); border:1px solid var(--physics); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--physics); flex-shrink:0;">2</div>
+          <p style="font-size:0.9rem; color:var(--text-dim); margin:0; line-height:1.6;"><strong style="color:var(--text);">Resolve every vector into x and y components.</strong> Use $A_x = A\\cos\\theta$, $A_y = A\\sin\\theta$.</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:28px; height:28px; border-radius:50%; background:rgba(74,158,255,0.2); border:1px solid var(--physics); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--physics); flex-shrink:0;">3</div>
+          <p style="font-size:0.9rem; color:var(--text-dim); margin:0; line-height:1.6;"><strong style="color:var(--text);">Add all x-components and all y-components separately.</strong> After this step, you have just two values left: $R_x$ and $R_y$.</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:28px; height:28px; border-radius:50%; background:rgba(74,158,255,0.2); border:1px solid var(--physics); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--physics); flex-shrink:0;">4</div>
+          <p style="font-size:0.9rem; color:var(--text-dim); margin:0; line-height:1.6;"><strong style="color:var(--text);">Use Pythagoras to get the final answer.</strong> $R = \\sqrt{R_x^2 + R_y^2}$, angle $= \\tan^{-1}\\!\\left(\\frac{R_y}{R_x}\\right)$.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--physics);">
+      <div class="eli10-title" style="color:var(--physics);">⭐ Q.31 — Find resultant of 10N at 37°, 4N left, 5N down</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);"><strong style="color:var(--text);">Resolve each vector:</strong></p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">10N at 37°: $x = 10\\cos37° = 8$ (right), $y = 10\\sin37° = 6$ (up)</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">4N left: $x = -4$, $y = 0$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">5N down: $x = 0$, $y = -5$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:10px;"><strong style="color:var(--text);">Net components:</strong> $R_x = 8-4+0 = 4$, $R_y = 6+0-5 = 1$</p>
+        $$R = \\sqrt{4^2 + 1^2} = \\sqrt{17}\\text{ N}, \\quad \\tan\\alpha = \\frac{1}{4}$$
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);">
+      <div class="eli10-title" style="color:var(--gold);">⭐ Q.32 — Two 5N at 37° on each side of y-axis</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">Right vector (37° from y-axis): $x = 5\\sin37° = 3$, $y = 5\\cos37° = 4$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">Left vector (53° from y-axis): $x = -5\\sin53° = -4$, $y = 5\\cos53° = 3$</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">$R_x = 3-4 = -1$, $R_y = 4+3 = 7$</p>
+        $$\\vec{R} = -\\hat{i} + 7\\hat{j}, \\quad |R| = \\sqrt{1+49} = \\sqrt{50} = 5\\sqrt{2}\\text{ N}$$
+        $$\\tan\\alpha = \\frac{7}{1} = 7 \\Rightarrow \\alpha = \\tan^{-1}(7) \\text{ from y-axis}$$
+      </div>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--chemistry);">
+      <div class="eli10-title" style="color:var(--chemistry);">⭐ Q.33 — Vector makes 30° with horizontal, horizontal component = 250N</div>
+      <div class="math-box" style="background:transparent; border-color:var(--border); margin-top:12px;">
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim);">$A_x = A\\cos30° = 250 \\Rightarrow A \\cdot \\frac{\\sqrt{3}}{2} = 250 \\Rightarrow A = \\frac{500}{\\sqrt{3}}$ N</p>
+        <p style="text-align:left; font-size:0.85rem; color:var(--text-dim); margin-top:8px;">Vertical component: $A_y = A\\sin30° = \\frac{500}{\\sqrt{3}} \\times \\frac{1}{2} = \\frac{250}{\\sqrt{3}}$ N</p>
+      </div>
+    </div>
+
+    <!-- ─── HOMEWORK / PRACTICE ─── -->
+    <div class="practice-box" style="border-color:var(--physics);">
+      <h3 style="color:var(--physics);">⚔️ Practice Arena — Vectors (HW Questions)</h3>
+      <p>Questions marked HW from Lecture 06. Attempt after understanding the theory above.</p>
+      <div class="hw-grid">
+        <div class="hw-item"><div class="hw-num">HW-10</div> Ball at 20 m/s hits wall &amp; bounces back. Find $|\\Delta\\vec{v}|$.</div>
+        <div class="hw-item"><div class="hw-num">HW-11</div> Bug turns from east (5 m/s) to north (5 m/s). Find $|\\Delta\\vec{v}|$.</div>
+        <div class="hw-item"><div class="hw-num">HW-12</div> $|\\vec{A}-\\vec{B}| = |\\vec{A}+\\vec{B}|$. Find angle.</div>
+        <div class="hw-item"><div class="hw-num">HW-13</div> $|\\vec{A}| = |\\vec{B}| = |\\vec{A}+\\vec{B}| = a$. Find $|\\vec{A}-\\vec{B}|$.</div>
+        <div class="hw-item"><div class="hw-num">HW-14</div> $|\\hat{A}+\\hat{B}| = \\sqrt{3}$. Find $|\\hat{A}-4\\hat{B}|$.</div>
+        <div class="hw-item"><div class="hw-num">HW-15</div> $|\\hat{A}-\\hat{B}|=1=|\\hat{A}|=|\\hat{B}|$. Find $|\\hat{A}+\\hat{B}|$.</div>
+        <div class="hw-item"><div class="hw-num">HW-16</div> Particle moves on circle with speed $v$. Find $|\\Delta\\vec{v}|$ from A to B (angle 60°).</div>
+        <div class="hw-item"><div class="hw-num">Q.26</div> $\\vec{A} = 12\\hat{i}+5\\hat{j}$. Find all 6 properties.</div>
+      </div>
+    </div>
+
+    <!-- Chapter Complete Banner -->
+    <div style="margin-top:80px; padding:40px; background:linear-gradient(135deg, rgba(201,168,76,0.06), rgba(74,158,255,0.06)); border:1px solid rgba(201,168,76,0.2); border-radius:20px; text-align:center;">
+      <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">✦ Chapter Complete ✦</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; margin-bottom:12px;">Mathematical Tools — Done! 💪</h3>
+      <p style="color:var(--text-dim); font-size:0.9rem; max-width:500px; margin:0 auto 24px; line-height:1.7;">You've covered Trigonometry, Small Angle Approximation, Binomial Approximation, AP &amp; GP, Straight Lines, and now <strong style="color:var(--text);">Vectors</strong> — the language of physics itself. These tools appear in every single chapter ahead. Keep going! 💪</p>
+      <div style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; color:var(--text-muted);">Homework → DPP + Complete all HW questions from Lecture 06</div>
     </div>
   `
 };
