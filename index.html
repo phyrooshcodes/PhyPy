@@ -1434,75 +1434,194 @@ const chapterContents = {
       <em>(Notice how $\\sin$ turned into $\\cos$, but we still get the exact same answer!)</em>
     </div>
 
-    <h3 style="color: var(--gold); margin-top: 50px;">Values of $\\sin\\theta, \\cos\\theta$ and $\\tan\\theta$ for some standard angles.</h3>
-    <div style="overflow-x: auto;">
+    <h3 style="color: var(--gold); margin-top: 50px;">Values of $\\sin\\theta, \\cos\\theta$ and $\\tan\\theta$ for standard angles (0° – 360°)</h3>
+
+    <!-- ── Quadrant I + JEE specials: 0° – 90° ── -->
+    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--physics);margin:24px 0 10px;">Quadrant I &amp; JEE Special Angles (0° – 90°) · All positive</p>
+    <div style="overflow-x: auto; margin-bottom: 32px;">
       <table class="trigo-table">
         <tr>
           <th>Degree</th>
-          <th>0</th>
-          <th>30</th>
-          <th>37</th>
-          <th>45</th>
-          <th>53</th>
-          <th>60</th>
-          <th>90</th>
-          <th>120</th>
-          <th>135</th>
-          <th>180</th>
+          <th>0°</th>
+          <th>30°</th>
+          <th>37°</th>
+          <th>45°</th>
+          <th>53°</th>
+          <th>60°</th>
+          <th>90°</th>
         </tr>
         <tr>
           <td>Radians</td>
-          <td>0</td>
-          <td>$\\pi/6$</td>
-          <td>$37\\pi/180$</td>
-          <td>$\\pi/4$</td>
-          <td>$53\\pi/180$</td>
-          <td>$\\pi/3$</td>
-          <td>$\\pi/2$</td>
-          <td>$2\\pi/3$</td>
-          <td>$3\\pi/4$</td>
+          <td>$0$</td>
+          <td>$\\dfrac{\\pi}{6}$</td>
+          <td>$\\dfrac{37\\pi}{180}$</td>
+          <td>$\\dfrac{\\pi}{4}$</td>
+          <td>$\\dfrac{53\\pi}{180}$</td>
+          <td>$\\dfrac{\\pi}{3}$</td>
+          <td>$\\dfrac{\\pi}{2}$</td>
+        </tr>
+        <tr>
+          <td>$\\sin \\theta$</td>
+          <td>$0$</td>
+          <td>$\\dfrac{1}{2}$</td>
+          <td>$\\dfrac{3}{5}$</td>
+          <td>$\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$\\dfrac{4}{5}$</td>
+          <td>$\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$1$</td>
+        </tr>
+        <tr>
+          <td>$\\cos \\theta$</td>
+          <td>$1$</td>
+          <td>$\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$\\dfrac{4}{5}$</td>
+          <td>$\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$\\dfrac{3}{5}$</td>
+          <td>$\\dfrac{1}{2}$</td>
+          <td>$0$</td>
+        </tr>
+        <tr>
+          <td>$\\tan \\theta$</td>
+          <td>$0$</td>
+          <td>$\\dfrac{1}{\\sqrt{3}}$</td>
+          <td>$\\dfrac{3}{4}$</td>
+          <td>$1$</td>
+          <td>$\\dfrac{4}{3}$</td>
+          <td>$\\sqrt{3}$</td>
+          <td>$\\pm\\infty$</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ── Quadrant II: 120° – 180° ── -->
+    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--math);margin:0 0 10px;">Quadrant II (120° – 180°) · sin +, cos –, tan –</p>
+    <div style="overflow-x: auto; margin-bottom: 32px;">
+      <table class="trigo-table">
+        <tr>
+          <th>Degree</th>
+          <th>120°</th>
+          <th>135°</th>
+          <th>150°</th>
+          <th>180°</th>
+        </tr>
+        <tr>
+          <td>Radians</td>
+          <td>$\\dfrac{2\\pi}{3}$</td>
+          <td>$\\dfrac{3\\pi}{4}$</td>
+          <td>$\\dfrac{5\\pi}{6}$</td>
           <td>$\\pi$</td>
         </tr>
         <tr>
           <td>$\\sin \\theta$</td>
-          <td>0</td>
-          <td>$1/2$</td>
-          <td>$3/5$</td>
-          <td>$1/\\sqrt{2}$</td>
-          <td>$4/5$</td>
-          <td>$\\sqrt{3}/2$</td>
-          <td>$1$</td>
-          <td>$\\sqrt{3}/2$</td>
-          <td>$1/\\sqrt{2}$</td>
-          <td>0</td>
+          <td>$\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$\\dfrac{1}{2}$</td>
+          <td>$0$</td>
         </tr>
         <tr>
           <td>$\\cos \\theta$</td>
-          <td>1</td>
-          <td>$\\sqrt{3}/2$</td>
-          <td>$4/5$</td>
-          <td>$1/\\sqrt{2}$</td>
-          <td>$3/5$</td>
-          <td>$1/2$</td>
-          <td>0</td>
-          <td>$-1/2$</td>
-          <td>$-1/\\sqrt{2}$</td>
+          <td>$-\\dfrac{1}{2}$</td>
+          <td>$-\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$-\\dfrac{\\sqrt{3}}{2}$</td>
           <td>$-1$</td>
         </tr>
         <tr>
           <td>$\\tan \\theta$</td>
-          <td>0</td>
-          <td>$1/\\sqrt{3}$</td>
-          <td>$3/4$</td>
-          <td>1</td>
-          <td>$4/3$</td>
-          <td>$\\sqrt{3}$</td>
-          <td>$\\infty$</td>
           <td>$-\\sqrt{3}$</td>
           <td>$-1$</td>
-          <td>0</td>
+          <td>$-\\dfrac{1}{\\sqrt{3}}$</td>
+          <td>$0$</td>
         </tr>
       </table>
+    </div>
+
+    <!-- ── Quadrant III: 210° – 270° ── -->
+    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--chemistry);margin:0 0 10px;">Quadrant III (210° – 270°) · tan +, sin –, cos –</p>
+    <div style="overflow-x: auto; margin-bottom: 32px;">
+      <table class="trigo-table">
+        <tr>
+          <th>Degree</th>
+          <th>210°</th>
+          <th>225°</th>
+          <th>240°</th>
+          <th>270°</th>
+        </tr>
+        <tr>
+          <td>Radians</td>
+          <td>$\\dfrac{7\\pi}{6}$</td>
+          <td>$\\dfrac{5\\pi}{4}$</td>
+          <td>$\\dfrac{4\\pi}{3}$</td>
+          <td>$\\dfrac{3\\pi}{2}$</td>
+        </tr>
+        <tr>
+          <td>$\\sin \\theta$</td>
+          <td>$-\\dfrac{1}{2}$</td>
+          <td>$-\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$-\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$-1$</td>
+        </tr>
+        <tr>
+          <td>$\\cos \\theta$</td>
+          <td>$-\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$-\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$-\\dfrac{1}{2}$</td>
+          <td>$0$</td>
+        </tr>
+        <tr>
+          <td>$\\tan \\theta$</td>
+          <td>$\\dfrac{1}{\\sqrt{3}}$</td>
+          <td>$1$</td>
+          <td>$\\sqrt{3}$</td>
+          <td>$\\pm\\infty$</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ── Quadrant IV: 300° – 360° ── -->
+    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;">Quadrant IV (300° – 360°) · cos +, sin –, tan –</p>
+    <div style="overflow-x: auto; margin-bottom: 16px;">
+      <table class="trigo-table">
+        <tr>
+          <th>Degree</th>
+          <th>300°</th>
+          <th>315°</th>
+          <th>330°</th>
+          <th>360°</th>
+        </tr>
+        <tr>
+          <td>Radians</td>
+          <td>$\\dfrac{5\\pi}{3}$</td>
+          <td>$\\dfrac{7\\pi}{4}$</td>
+          <td>$\\dfrac{11\\pi}{6}$</td>
+          <td>$2\\pi$</td>
+        </tr>
+        <tr>
+          <td>$\\sin \\theta$</td>
+          <td>$-\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$-\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$-\\dfrac{1}{2}$</td>
+          <td>$0$</td>
+        </tr>
+        <tr>
+          <td>$\\cos \\theta$</td>
+          <td>$\\dfrac{1}{2}$</td>
+          <td>$\\dfrac{1}{\\sqrt{2}}$</td>
+          <td>$\\dfrac{\\sqrt{3}}{2}$</td>
+          <td>$1$</td>
+        </tr>
+        <tr>
+          <td>$\\tan \\theta$</td>
+          <td>$-\\sqrt{3}$</td>
+          <td>$-1$</td>
+          <td>$-\\dfrac{1}{\\sqrt{3}}$</td>
+          <td>$0$</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="eli10-block" style="border-color:var(--gold);margin-top:24px;">
+      <div class="eli10-title" style="color:var(--gold);">💡 CAST Rule — The Ultimate Memory Trick</div>
+      <p style="margin:0;font-size:0.95rem;">Going anti-clockwise from Q1→Q4: <strong style="color:var(--text);">C</strong>heck <strong style="color:var(--text);">A</strong>ll <strong style="color:var(--text);">S</strong>igns <strong style="color:var(--text);">T</strong>wice — or read the quadrants clockwise as <strong style="color:var(--gold);">A · S · T · C</strong>. In Q1 <strong>A</strong>ll are +. In Q2 only <strong>S</strong>in is +. In Q3 only <strong>T</strong>an is +. In Q4 only <strong>C</strong>os is +.</p>
     </div>
 
     <h3>Angles larger than 360°</h3>
